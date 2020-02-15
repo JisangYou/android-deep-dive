@@ -6,7 +6,9 @@
 
     <data>
 
-        <!--        <variable name="sleepTrackerViewModel" />-->
+        <variable
+            name="memoViewModel"
+            type="com.example.memo.memolist.MemoViewModel" />
 
     </data>
 
