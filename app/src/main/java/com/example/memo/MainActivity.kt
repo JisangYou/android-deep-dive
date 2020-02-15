@@ -2,6 +2,7 @@ package com.example.memo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.memo.R
 
 class MainActivity : AppCompatActivity() {
 
