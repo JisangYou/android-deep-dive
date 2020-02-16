@@ -1,15 +1,16 @@
 package com.example.memo.data
 
 import android.content.Context
-import androidx.room.Dao
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Memo::class], version = 1)
+@Database(entities = [Memo::class], version = 1, exportSchema = false)
 abstract class MemoDatabase : RoomDatabase() {
-    //    abstract fun memoDatabaseDao(): MemoDatabaseDao
-    abstract val memoDatabaseDao: MemoDatabaseDao
+//    abstract fun memoDao(): MemoDao
+
+    abstract val memoDao: MemoDao
 
     companion object {
         /**
@@ -33,7 +34,7 @@ abstract class MemoDatabase : RoomDatabase() {
                         context.applicationContext,
                         MemoDatabase::class.java,
                         "memo_history_database"
-                    ).fallbackToDestructiveMigration().build()
+                    ).fallbackToDestructiveMigration().enableMultiInstanceInvalidation().build()
                     INSTANCE = instance
                 }
                 return instance

@@ -12,8 +12,7 @@ import com.example.memo.memolist.MemoAdapter.ViewHolder
 /**
  * Adapter for the task list. Has a reference to the [TasksViewModel] to send actions back to it.
  */
-class MemoAdapter(private val viewModel: MemoViewModel) :
-    ListAdapter<Memo, ViewHolder>(TaskDiffCallback()) {
+class MemoAdapter(private val viewModel: MemoViewModel) : ListAdapter<Memo, ViewHolder>(TaskDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -25,17 +24,6 @@ class MemoAdapter(private val viewModel: MemoViewModel) :
         return ViewHolder.from(parent)
     }
 
-    override fun submitList(list: MutableList<Memo>?) {
-        super.submitList(list)
-    }
-
-    override fun getItem(position: Int): Memo {
-        return super.getItem(position)
-    }
-
-    override fun getItemCount(): Int {
-        return 3
-    }
 
     class ViewHolder private constructor(val binding: MemoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

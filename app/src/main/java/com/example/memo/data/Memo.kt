@@ -8,8 +8,8 @@ import java.util.*
 @Entity(tableName = "memos")
 data class Memo(
 
-    @PrimaryKey @ColumnInfo(name = "memoId")
-    var memoId: String = UUID.randomUUID().toString(),
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "memoId")
+    var memoId: Long,
 
     @ColumnInfo(name = "startTimeMilli")
     val startTimeMilli: Long = System.currentTimeMillis(),

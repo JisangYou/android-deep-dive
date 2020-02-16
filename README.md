@@ -10,6 +10,7 @@
 - Coroutine
 
 ## 프로젝트 
+- 코루틴
 ```
 
 Android에서 코루틴은 다음 두 가지 기본 문제를 해결하는 데 도움이 됩니다.
@@ -18,9 +19,22 @@ Android에서 코루틴은 다음 두 가지 기본 문제를 해결하는 데 �
 
 ```
 
+- 리싸이클러뷰 중 listadapter
 ```
 RecyclerView 어댑터에서 두 리스트의 차이를 계산하는 DiffUtil이 있습니다. 이 클래스는 약간의 보일러플레이트 코드와 두 리스트의 비교 처리를 (권고사항으로) 백그라운드 스레드에서 실행 후 결과를 메인 스레드에서 처리하는 코드가 필요했습니다. ListAdapter는 내부적으로 AsyncListDiffer을 사용해 개발자가 직접 DiffUtil을 사용할 때 필요했던 처리를 대신 다룹니다. 이를 통해 더 적은 코드로 두 리스트의 차이를 계산해서 변경이 발생한 부분만 업데이트
 ListAdapter는 내부적으로 리스트를 읽기만 가능한 불변 객체로 다룹니다. 따라서 전달된 리스트에서 항목을 직접 변경하는 것을 허용하지 않고, 만일 변경한다고 하더라도 업데이트는 반영되지 않습니다. 리스트에서 항목이 수정, 추가, 삭제, 이동이 발생하는 경우, 반드시 변경이 반영된 새로운 리스트를 ListAdapter로 전달해야 합니다. 백그라운드 스레드에서 리스트 변경 사항이 계산되면 내부적으로 notifyItem*() 함수가 호출되고, 사용자는 업데이트 된 RecyclerView를 볼 수 있습니다. 이는 기존의 RecyclerView 어댑터와의 차이점이자 ListAdapter의 특징
 ```
 
 [출처](https://medium.com/@jungil.han/recyclerview-%EA%B0%9C%EB%B0%9C%EC%97%90-%EB%82%A0%EA%B0%9C-%EB%8B%AC%EA%B8%B0-539e08291160)
+
+- Sealed class 
+Sealed classes are used for representing restricted class hierarchies, when a value can have one of the types from a limited set, but cannot have any other type. They are, in a sense, an extension of enum classes: the set of values for an enum type is also restricted, but each enum constant exists only as a single instance, whereas a subclass of a sealed class can have multiple instances which can contain state.
+
+- Room 그래들 세팅
+
+ex)
+apply plugin: "kotlin-kapt"
+
+// Room
+implementation "androidx.room:room-runtime:$room_version"
+kapt "androidx.room:room-compiler:$room_version"

@@ -1,9 +1,11 @@
 package com.example.memo.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.memo.data.Memo
 
 @Dao
-interface MemoDatabaseDao {
+interface MemoDao {
     /**
      * Insert a task in the database. If the task already exists, replace it.
      *
@@ -16,11 +18,11 @@ interface MemoDatabaseDao {
     fun updateMemo(memo: Memo)
 
     @Query("SELECT * FROM memos")
-    fun getMemos()
+    fun getMemos(): LiveData<List<Memo>>
 
-    @Query("SELECT * FROM memos WHERE memoId=:memoId")
-    fun getMemoById(memoId: String)
+//    @Query("SELECT * FROM memos WHERE memoId=:memoId")
+//    fun getMemoById(memoId: String)
 
-    @Query("DELETE FROM memos WHERE memoId = :memoId")
-    fun deleteTaskById(memoId: String): Int
+//    @Query("DELETE FROM memos WHERE memoId = :memoId")
+//    fun deleteTaskById(memoId: Long)
 }
