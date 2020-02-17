@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
+import com.example.memo.data.Memo
 import com.example.memo.data.MemoDatabase
 
 import com.example.memo.databinding.FragmentMemoListBinding
@@ -33,25 +35,32 @@ class MemoListFragment : Fragment() {
         val dataSource = MemoDatabase.getInstance(application).memoDao
         val viewModelFactory =
             ViewModelFactory(dataSource, application)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
 
-        binding.memoViewModel = viewModel
-        val manager = GridLayoutManager(activity, 3)
-        binding.rvMemoList.layoutManager = manager
+        val memoViewModel =
+            ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
+        binding.rvMemoList.layoutManager = GridLayoutManager(activity, 3)
 
+        binding.memoViewModel = memoViewModel
 
-        val adapter = MemoAdapter(viewModel)
-        binding.rvMemoList.adapter = adapter
+        binding.rvMemoList.adapter =
+            MemoAdapter(memoViewModel, MemoAdapter.OnClickListener {
+
+            })
 
         binding.lifecycleOwner = this
 
+        memoViewModel.allMemos.observe(viewLifecycleOwner, Observer {
+            it?.let { (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(it) }
+        })
+
         binding.fabAddMemo.setOnClickListener {
-            navigateToAddNewTask()
+            //            navigateToAddNewTask()
+            val memo = Memo(1, 12312, "123", "1234", "12344")
+            (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(listOf(memo,memo))
         }
 
         return binding.root
     }
-
 
 
     private fun navigateToAddNewTask() {

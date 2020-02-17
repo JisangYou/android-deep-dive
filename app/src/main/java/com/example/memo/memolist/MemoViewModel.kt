@@ -12,7 +12,7 @@ class MemoViewModel(memoDao: MemoDao, application: Application) : AndroidViewMod
 
     private val memoRepository: MemoRepository
 
-    private val allMemos: LiveData<List<Memo>>
+    val allMemos: LiveData<List<Memo>>
 
     init {
         val memosDao = MemoDatabase.getInstance(application).memoDao
@@ -23,5 +23,7 @@ class MemoViewModel(memoDao: MemoDao, application: Application) : AndroidViewMod
     fun insertMemo(memo: Memo) = viewModelScope.launch {
         memoRepository.insert(memo)
     }
+
+
 
 }

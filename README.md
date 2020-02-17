@@ -38,3 +38,9 @@ apply plugin: "kotlin-kapt"
 // Room
 implementation "androidx.room:room-runtime:$room_version"
 kapt "androidx.room:room-compiler:$room_version"
+
+- error
+
+// Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
+
+- safe-args
