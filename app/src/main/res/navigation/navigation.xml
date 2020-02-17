@@ -8,14 +8,22 @@
         android:id="@+id/fragment_memo_list"
         android:name="com.example.memo.memolist.MemoListFragment"
         android:label="@string/fragment_memo_list"
-        tools:layout="@layout/fragment_memo_list" >
+        tools:layout="@layout/fragment_memo_list">
         <action
             android:id="@+id/action_fragment_memo_list_to_memoDetailFragment"
             app:destination="@id/fragment_memo_detail" />
+        <action
+            android:id="@+id/action_fragment_memo_list_to_memoEdited"
+            app:destination="@id/fragment_memo_edited" />
     </fragment>
     <fragment
         android:id="@+id/fragment_memo_detail"
         android:name="com.example.memo.memodetail.MemoDetailFragment"
         android:label="fragment_memo_detail"
         tools:layout="@layout/fragment_memo_detail" />
+    <fragment
+        android:id="@+id/fragment_memo_edited"
+        android:name="com.example.memo.memoedited.MemoEdited"
+        android:label="fragment_memo_edited"
+        tools:layout="@layout/fragment_memo_edited" />
 </navigation>

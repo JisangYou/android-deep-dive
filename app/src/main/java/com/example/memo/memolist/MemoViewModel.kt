@@ -10,5 +10,18 @@ import kotlinx.coroutines.launch
 
 class MemoViewModel(memoDao: MemoDao, application: Application) : AndroidViewModel(application) {
 
+    private val memoRepository: MemoRepository
+
+    private val allMemos: LiveData<List<Memo>>
+
+    init {
+        val memosDao = MemoDatabase.getInstance(application).memoDao
+        memoRepository = MemoRepository(memosDao)
+        allMemos = memoRepository.allMemos
+    }
+
+    fun insertMemo(memo: Memo) = viewModelScope.launch {
+        memoRepository.insert(memo)
+    }
 
 }
