@@ -25,5 +25,14 @@
         android:id="@+id/fragment_memo_edited"
         android:name="com.example.memo.memoedited.MemoEdited"
         android:label="fragment_memo_edited"
-        tools:layout="@layout/fragment_memo_edited" />
+        tools:layout="@layout/fragment_memo_edited">
+<!--        <argument-->
+<!--            android:name="memoId"-->
+<!--            app:argType="long"-->
+<!--            app:nullable="false" />-->
+<!--        <argument-->
+<!--            android:name="title"-->
+<!--            app:argType="string"-->
+<!--            app:nullable="false" />-->
+    </fragment>
 </navigation>

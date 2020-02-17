@@ -24,6 +24,4 @@ class MemoViewModel(memoDao: MemoDao, application: Application) : AndroidViewMod
         memoRepository.insert(memo)
     }
 
-
-
 }

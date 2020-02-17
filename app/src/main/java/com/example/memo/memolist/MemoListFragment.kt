@@ -50,20 +50,23 @@ class MemoListFragment : Fragment() {
         binding.lifecycleOwner = this
 
         memoViewModel.allMemos.observe(viewLifecycleOwner, Observer {
-            it?.let { (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(it) }
+            it?.let {
+                (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(it)
+            }
         })
 
         binding.fabAddMemo.setOnClickListener {
-            //            navigateToAddNewTask()
-            val memo = Memo(1, 12312, "123", "1234", "12344")
-            (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(listOf(memo,memo))
+            navigateToMemoEdited()
+//            val memo = Memo(1, 12312, "123", "1234", "12344")
+//            memoViewModel.insertMemo(memo = Memo(1, 12312, "123", "1234", "12344"))
+//            (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(listOf(memo,memo))
         }
 
         return binding.root
     }
 
 
-    private fun navigateToAddNewTask() {
+    private fun navigateToMemoEdited() {
         val action = MemoListFragmentDirections
             .actionFragmentMemoListToMemoEdited()
         findNavController().navigate(action)

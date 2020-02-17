@@ -1,5 +1,6 @@
 package com.example.memo.memolist
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -16,7 +17,10 @@ import kotlinx.coroutines.withContext
 /**
  * Adapter for the task list. Has a reference to the [TasksViewModel] to send actions back to it.
  */
-class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnClickListener) : ListAdapter<Memo, ViewHolder>(DiffCallback) {
+class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnClickListener) :
+    ListAdapter<Memo, ViewHolder>(DiffCallback) {
+
+    private val adapterScope = CoroutineScope(Dispatchers.Default)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -28,8 +32,6 @@ class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnC
         holder.bind(viewModel, item)
     }
 
-    private val adapterScope = CoroutineScope(Dispatchers.Default)
-
     fun addSubmitList(list: List<Memo>?) {
         adapterScope.launch {
 
@@ -39,7 +41,8 @@ class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnC
         }
     }
 
-    class ViewHolder private constructor(private val binding: MemoItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder private constructor(private val binding: MemoItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewModel: MemoViewModel, item: Memo) {
 
