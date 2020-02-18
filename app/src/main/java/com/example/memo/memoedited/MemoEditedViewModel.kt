@@ -8,4 +8,6 @@ class MemoEditedViewModel(memoDao: MemoDao, application: Application) : AndroidV
 
 
 
+
+
 }

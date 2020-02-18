@@ -71,8 +71,8 @@ class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnC
         }
     }
 
-    class OnClickListener(val clickListener: (memo: Memo) -> Unit) {
-        fun onClick(memo: Memo) = clickListener(memo)
+    class OnClickListener(val clickListener: (memoId: Long) -> Unit) {
+        fun onClick(memo: Memo) = clickListener(memo.memoId)
     }
 }
 

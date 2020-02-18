@@ -5,23 +5,22 @@ import androidx.lifecycle.*
 import com.example.memo.data.Memo
 import com.example.memo.data.MemoDao
 import com.example.memo.data.MemoDatabase
-import com.example.memo.data.MemoRepository
 import kotlinx.coroutines.launch
 
 class MemoViewModel(memoDao: MemoDao, application: Application) : AndroidViewModel(application) {
 
-    private val memoRepository: MemoRepository
+    // apply 특정 객체를 생성함과 동시에 초기화
 
+    private var _allMemos = MutableLiveData<List<Memo>>().apply { value = emptyList() }
     val allMemos: LiveData<List<Memo>>
+        get() = _allMemos
+
 
     init {
         val memosDao = MemoDatabase.getInstance(application).memoDao
-        memoRepository = MemoRepository(memosDao)
-        allMemos = memoRepository.allMemos
+//        _allMemos = memosDao.getMemos() as MutableLiveData<List<Memo>>
+
     }
 
-    fun insertMemo(memo: Memo) = viewModelScope.launch {
-        memoRepository.insert(memo)
-    }
 
 }

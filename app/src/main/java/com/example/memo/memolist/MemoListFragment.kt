@@ -43,7 +43,8 @@ class MemoListFragment : Fragment() {
         binding.memoViewModel = memoViewModel
 
         binding.rvMemoList.adapter =
-            MemoAdapter(memoViewModel, MemoAdapter.OnClickListener {
+            MemoAdapter(memoViewModel, MemoAdapter.OnClickListener { memoId ->
+                //                navigateToMemoDetail(memoId)
 
             })
 
@@ -56,7 +57,7 @@ class MemoListFragment : Fragment() {
         })
 
         binding.fabAddMemo.setOnClickListener {
-            navigateToMemoEdited()
+                        navigateToMemoEdited()
 //            val memo = Memo(1, 12312, "123", "1234", "12344")
 //            memoViewModel.insertMemo(memo = Memo(1, 12312, "123", "1234", "12344"))
 //            (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(listOf(memo,memo))
@@ -69,6 +70,12 @@ class MemoListFragment : Fragment() {
     private fun navigateToMemoEdited() {
         val action = MemoListFragmentDirections
             .actionFragmentMemoListToMemoEdited()
+        findNavController().navigate(action)
+    }
+
+    private fun navigateToMemoDetail(memoId: Long) {
+        val action = MemoListFragmentDirections
+            .actionFragmentMemoListToMemoDetailFragment(memoId)
         findNavController().navigate(action)
     }
 

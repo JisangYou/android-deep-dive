@@ -20,19 +20,17 @@
         android:id="@+id/fragment_memo_detail"
         android:name="com.example.memo.memodetail.MemoDetailFragment"
         android:label="fragment_memo_detail"
-        tools:layout="@layout/fragment_memo_detail" />
+        tools:layout="@layout/fragment_memo_detail">
+        <argument
+            android:name="memoId"
+            app:argType="long"
+            app:nullable="false" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_memo_edited"
-        android:name="com.example.memo.memoedited.MemoEdited"
+        android:name="com.example.memo.memoedited.MemoEditedFragment"
         android:label="fragment_memo_edited"
         tools:layout="@layout/fragment_memo_edited">
-<!--        <argument-->
-<!--            android:name="memoId"-->
-<!--            app:argType="long"-->
-<!--            app:nullable="false" />-->
-<!--        <argument-->
-<!--            android:name="title"-->
-<!--            app:argType="string"-->
-<!--            app:nullable="false" />-->
+
     </fragment>
 </navigation>
