@@ -5,9 +5,12 @@ import androidx.lifecycle.*
 import com.example.memo.data.Memo
 import com.example.memo.data.MemoDao
 import com.example.memo.data.MemoDatabase
+import com.example.memo.data.MemoRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MemoViewModel(memoDao: MemoDao, application: Application) : AndroidViewModel(application) {
+class MemoViewModel(memoRepository: MemoRepository, application: Application) : AndroidViewModel(application) {
 
     // apply 특정 객체를 생성함과 동시에 초기화
 
@@ -16,11 +19,17 @@ class MemoViewModel(memoDao: MemoDao, application: Application) : AndroidViewMod
         get() = _allMemos
 
 
+    private val memoRepository = memoRepository
+
     init {
-        val memosDao = MemoDatabase.getInstance(application).memoDao
-//        _allMemos = memosDao.getMemos() as MutableLiveData<List<Memo>>
+
 
     }
 
 
+    private suspend fun initializeMemo() {
+        withContext(Dispatchers.IO) {
+            memoRepository.getMemos()
+        }
+    }
 }
