@@ -32,12 +32,12 @@ class MemoEditedFragment : Fragment() {
         val dataSource = MemoDatabase.getInstance(application).memoDao
         val viewModelFactory = ViewModelFactory(dataSource, application)
 
-        val editViewModel = ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
+        val editViewModel =
+            ViewModelProvider(this, viewModelFactory).get(MemoEditedViewModel::class.java)
 
-        
-        binding.fabAddMemo.setOnClickListener{
-            binding.tvTitle.text = "molly"
-            binding.tvDescription.text = "helllo"
+
+        binding.fabAddMemo.setOnClickListener {
+            editViewModel.addMemo()
         }
 
 

@@ -44,3 +44,4 @@ kapt "androidx.room:room-compiler:$room_version"
 // Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
 
 - safe-args
+세팅 및 기능
