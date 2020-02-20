@@ -18,11 +18,25 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
 
     // xml 상에서 세팅된 변수 값
 
+    val TAG = javaClass.simpleName
     val title = MutableLiveData<String>()
 //    val title: LiveData<String> get() = _title
 
     val description = MutableLiveData<String>()
 //    val description: LiveData<String> get() = _description
+
+    /**
+     * 아래는 xml 에러가...
+     */
+//    private var _title = MutableLiveData<String>()
+//    val title: LiveData<String> get() = _title
+//
+//    private var _description = MutableLiveData<String>()
+//    val description: LiveData<String> get() = _description
+
+    init {
+
+    }
 
 
     private suspend fun insert() {
@@ -33,17 +47,15 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
 //                )
 //
 //            )
-            Log.e("insertMemo2", "checking ${title.value} ${description.value}")
+            Log.e(TAG, "checking ${title.value} ${description.value}")
         }
     }
+
 
     fun addMemo() {
         viewModelScope.launch {
             insert()
-            Log.e("insertMemo1", "checking ${title.value} ${description.value}")
 
         }
-
-
     }
 }

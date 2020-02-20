@@ -22,6 +22,10 @@ import com.example.memo.databinding.FragmentMemoEditedBinding
  */
 class MemoEditedFragment : Fragment() {
 
+
+    val TAG = javaClass.simpleName
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,17 +40,23 @@ class MemoEditedFragment : Fragment() {
         val editViewModel =
             ViewModelProvider(this, viewModelFactory).get(MemoEditedViewModel::class.java)
 
-        val TAG = javaClass.simpleName
 
         binding.fabAddMemo.setOnClickListener {
             editViewModel.addMemo()
-//            Log.e(TAG, binding.tvDescription.text.toString())
-//            Log.e(TAG, binding.tvTitle.text.toString())
+
+            editViewModel.title.value = binding.tvTitle.text.toString()
+            editViewModel.description.value = binding.tvDescription.text.toString()
+
+            Log.e(TAG, editViewModel.title.toString() + " ==== ")
+            Log.e(TAG, editViewModel.description.toString() + " ==== ")
         }
 
-        val newTitle = binding.tvTitle
 
-        val titleObserver = Observer<String> {titles-> newTitle.text  }
+
+        editViewModel.title.observe(viewLifecycleOwner, Observer {
+            Log.e(TAG, "it    $it ==== ")
+
+        })
 
         return binding.root
     }
