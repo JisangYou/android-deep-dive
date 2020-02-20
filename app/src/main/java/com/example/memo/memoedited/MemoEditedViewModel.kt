@@ -3,6 +3,7 @@ package com.example.memo.memoedited
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.memo.data.Memo
@@ -18,22 +19,29 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
     // xml 상에서 세팅된 변수 값
 
     val title = MutableLiveData<String>()
+//    val title: LiveData<String> get() = _title
+
     val description = MutableLiveData<String>()
-    private var memoId: Long = 0
-
-    private var isNewTask: Boolean = false
+//    val description: LiveData<String> get() = _description
 
 
-    private suspend fun insertMemo() {
+    private suspend fun insert() {
         withContext(Dispatchers.IO) {
-            memoDao.insertMemo(Memo(0, 1111,"haha", "hehe"))
-            Log.e("insertMemo","checking")
+            //            memoDao.insertMemo(
+//                Memo(
+//
+//                )
+//
+//            )
+            Log.e("insertMemo2", "checking ${title.value} ${description.value}")
         }
     }
 
     fun addMemo() {
         viewModelScope.launch {
-            insertMemo()
+            insert()
+            Log.e("insertMemo1", "checking ${title.value} ${description.value}")
+
         }
 
 

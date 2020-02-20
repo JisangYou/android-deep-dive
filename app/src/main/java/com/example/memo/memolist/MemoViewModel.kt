@@ -12,6 +12,7 @@ import kotlinx.coroutines.withContext
 class MemoViewModel(private val memoDao: MemoDao, application: Application) :
     AndroidViewModel(application) {
 
+    val TAG = javaClass.simpleName
     // apply 특정 객체를 생성함과 동시에 초기화
     private var _allMemos = MutableLiveData<List<Memo>>().apply { value = emptyList() }
     val allMemos: LiveData<List<Memo>>
@@ -19,19 +20,26 @@ class MemoViewModel(private val memoDao: MemoDao, application: Application) :
 
     init {
         viewModelScope.launch {
-            initializeMemo()
+            _allMemos.value = initializeMemo()
         }
     }
 
-    private suspend fun initializeMemo() {
+    private suspend fun initializeMemo(): ArrayList<Memo> {
+        val memoToShow = ArrayList<Memo>()
         withContext(Dispatchers.IO) {
-            //            memoDao.getMemos()
-//            Log.e("initializeMemo","memoDao.getMemos() === "+ memoDao.getMemos())
-
-//            for (i in 0..memoDao.getMemos().size) {
-//                Log.e("initializeMemo","memoDao.getMemos() === "+ memoDao.getMemos().get(i))
-//            }
+            Log.e(TAG, "memoDao.getMemos() === " + memoDao.getMemos().size)
+            if (memoDao.getMemos().isEmpty()) {
+                Log.e(TAG, "null")
+            } else {
+                val memoList = memoDao.getMemos()
+                Log.e(TAG, "memoList != null ")
+                for (memo in memoList) {
+                    Log.e(TAG, memo.title)
+                    memoToShow.add(memo)
+                }
+            }
         }
+        return memoToShow
     }
 
 

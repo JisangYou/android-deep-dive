@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
 import com.example.memo.data.Memo
@@ -38,7 +39,7 @@ class MemoListFragment : Fragment() {
 
         val memoViewModel =
             ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
-        binding.rvMemoList.layoutManager = GridLayoutManager(activity, 3)
+        binding.rvMemoList.layoutManager = LinearLayoutManager(activity)
 
         binding.memoViewModel = memoViewModel
 
@@ -57,10 +58,8 @@ class MemoListFragment : Fragment() {
         })
 
         binding.fabAddMemo.setOnClickListener {
-                        navigateToMemoEdited()
-//            val memo = Memo(1, 12312, "123", "1234", "12344")
-//            memoViewModel.insertMemo(memo = Memo(1, 12312, "123", "1234", "12344"))
-//            (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(listOf(memo,memo))
+            navigateToMemoEdited()
+
         }
 
         return binding.root

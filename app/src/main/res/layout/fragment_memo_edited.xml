@@ -21,15 +21,17 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@={editViewModel.title}"
             android:layout_weight="1"
-            android:text="@={editViewModel.title}" />
+            />
 
         <EditText
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@={editViewModel.description}"
             android:layout_weight="1"
-            android:text="@={editViewModel.description}" />
+             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_imageList"

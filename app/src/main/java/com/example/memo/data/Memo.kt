@@ -9,7 +9,7 @@ import java.util.*
 data class Memo(
 
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "memoId")
-    var memoId: Long,
+    var memoId: Long = 0,
 
     @ColumnInfo(name = "startTimeMilli")
     val startTimeMilli: Long = System.currentTimeMillis(),
@@ -19,7 +19,7 @@ data class Memo(
 
     @ColumnInfo(name = "description")
     val description: String
-
+//
 //    @ColumnInfo(name = "url")
 //    val url: String
 
