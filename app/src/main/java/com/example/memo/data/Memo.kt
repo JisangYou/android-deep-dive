@@ -9,16 +9,16 @@ import java.util.*
 data class Memo(
 
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "memoId")
-    var memoId: Long = 0,
+    var memoId: Long,
 
     @ColumnInfo(name = "startTimeMilli")
-    val startTimeMilli: Long = System.currentTimeMillis(),
+    val startTimeMilli: Long,
 
     @ColumnInfo(name = "title")
-    val title: String,
+    val title: String?,
 
     @ColumnInfo(name = "description")
-    val description: String
+    val description: String?
 //
 //    @ColumnInfo(name = "url")
 //    val url: String

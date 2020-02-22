@@ -21,29 +21,26 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
     val TAG = javaClass.simpleName
     // Two-way databinding, exposing MutableLiveData
     val title = MutableLiveData<String>()
-
-    // Two-way databinding, exposing MutableLiveData
     val description = MutableLiveData<String>()
 
 
-    private suspend fun insert() {
+    private suspend fun insert(newTitle: String?, newDescription: String?) {
         withContext(Dispatchers.IO) {
-            //            memoDao.insertMemo(
-//                Memo(
-//
-//                )
-//
-//            )
-
+            memoDao.insertMemo(
+                Memo(
+                    0,
+                    System.currentTimeMillis(),
+                    newTitle,
+                    newDescription
+                )
+            )
         }
     }
 
 
     fun addMemo() {
-        Log.e(TAG, "checking ${title.value} ${description.value}")
-//        viewModelScope.launch {
-//            insert()
-//
-//        }
+        viewModelScope.launch {
+            insert(title.value, description.value)
+        }
     }
 }

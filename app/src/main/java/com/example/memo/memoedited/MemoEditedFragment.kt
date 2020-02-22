@@ -48,11 +48,11 @@ class MemoEditedFragment : Fragment() {
 
 
         editViewModel.title.observe(viewLifecycleOwner, Observer {
-            Log.e(TAG, "editViewModel.title  == " + editViewModel.title)
+            Log.e(TAG, "title  == $it")
         })
 
         editViewModel.description.observe(viewLifecycleOwner, Observer {
-            Log.e(TAG, "editViewModel.description == " + editViewModel.description)
+            Log.e(TAG, "description  == $it")
         })
 
         return binding.root

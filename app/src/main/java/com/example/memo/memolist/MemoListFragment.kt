@@ -2,6 +2,7 @@ package com.example.memo.memolist
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,12 +25,17 @@ import com.example.memo.databinding.FragmentMemoListBinding
  */
 class MemoListFragment : Fragment() {
 
+
+    private lateinit var binding: FragmentMemoListBinding
+    private val TAG = javaClass.simpleName
+    private lateinit var memoViewModel: MemoViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentMemoListBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_memo_list, container, false
         )
         val application = requireNotNull(this.activity).application
@@ -37,11 +43,12 @@ class MemoListFragment : Fragment() {
         val viewModelFactory =
             ViewModelFactory(dataSource, application)
 
-        val memoViewModel =
+        memoViewModel =
             ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
         binding.rvMemoList.layoutManager = LinearLayoutManager(activity)
 
         binding.memoViewModel = memoViewModel
+        binding.lifecycleOwner = this
 
         binding.rvMemoList.adapter =
             MemoAdapter(memoViewModel, MemoAdapter.OnClickListener { memoId ->
@@ -49,13 +56,6 @@ class MemoListFragment : Fragment() {
 
             })
 
-        binding.lifecycleOwner = this
-
-        memoViewModel.allMemos.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(it)
-            }
-        })
 
         binding.fabAddMemo.setOnClickListener {
             navigateToMemoEdited()
@@ -65,6 +65,26 @@ class MemoListFragment : Fragment() {
         return binding.root
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        /**
+         * 생명주기를 고려한 메모리스트 로딩
+         */
+        getMemoList()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e(TAG, "onResume")
+    }
+
+    private fun getMemoList() {
+        memoViewModel.allMemos.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(it)
+            }
+        })
+    }
 
     private fun navigateToMemoEdited() {
         val action = MemoListFragmentDirections
