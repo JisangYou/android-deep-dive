@@ -40,14 +40,20 @@ class MemoEditedFragment : Fragment() {
         val editViewModel =
             ViewModelProvider(this, viewModelFactory).get(MemoEditedViewModel::class.java)
 
+        /**
+         * View model과 data 바인딩 세팅
+         */
         binding.editViewModel = editViewModel
         binding.lifecycleOwner = this
 
 
-//        editViewModel.title.observe(viewLifecycleOwner, Observer {
-//            Log.e(TAG, "it    $it ==== ")
-//
-//        })
+        editViewModel.title.observe(viewLifecycleOwner, Observer {
+            Log.e(TAG, "editViewModel.title  == " + editViewModel.title)
+        })
+
+        editViewModel.description.observe(viewLifecycleOwner, Observer {
+            Log.e(TAG, "editViewModel.description == " + editViewModel.description)
+        })
 
         return binding.root
     }

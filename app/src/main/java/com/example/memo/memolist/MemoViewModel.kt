@@ -27,14 +27,13 @@ class MemoViewModel(private val memoDao: MemoDao, application: Application) :
     private suspend fun initializeMemo(): ArrayList<Memo> {
         val memoToShow = ArrayList<Memo>()
         withContext(Dispatchers.IO) {
-            Log.e(TAG, "memoDao.getMemos() === " + memoDao.getMemos().size)
             if (memoDao.getMemos().isEmpty()) {
                 Log.e(TAG, "null")
             } else {
                 val memoList = memoDao.getMemos()
-                Log.e(TAG, "memoList != null ")
+                Log.e(TAG, "memoList = " + memoList.size)
                 for (memo in memoList) {
-                    Log.e(TAG, memo.title)
+                    Log.e(TAG, memo.title + " : " + memoList.size)
                     memoToShow.add(memo)
                 }
             }
