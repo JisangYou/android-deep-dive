@@ -40,23 +40,14 @@ class MemoEditedFragment : Fragment() {
         val editViewModel =
             ViewModelProvider(this, viewModelFactory).get(MemoEditedViewModel::class.java)
 
-
-        binding.fabAddMemo.setOnClickListener {
-            editViewModel.addMemo()
-
-            editViewModel.title.value = binding.tvTitle.text.toString()
-            editViewModel.description.value = binding.tvDescription.text.toString()
-
-            Log.e(TAG, editViewModel.title.toString() + " ==== ")
-            Log.e(TAG, editViewModel.description.toString() + " ==== ")
-        }
+        binding.editViewModel = editViewModel
+        binding.lifecycleOwner = this
 
 
-
-        editViewModel.title.observe(viewLifecycleOwner, Observer {
-            Log.e(TAG, "it    $it ==== ")
-
-        })
+//        editViewModel.title.observe(viewLifecycleOwner, Observer {
+//            Log.e(TAG, "it    $it ==== ")
+//
+//        })
 
         return binding.root
     }
