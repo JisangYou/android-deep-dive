@@ -43,4 +43,10 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
             insert(title.value, description.value)
         }
     }
+
+    fun addImage() {
+        viewModelScope.launch {
+
+        }
+    }
 }

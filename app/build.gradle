@@ -52,6 +52,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle_extensions"
     testImplementation "androidx.room:room-testing:$version_room"
 
+    //Timber
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+
     // 테스트 세팅
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

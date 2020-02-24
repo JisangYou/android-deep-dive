@@ -12,6 +12,7 @@ buildscript {
         version_lifecycle_extensions = "2.2.0"
         // 네이게이션 바가 세팅이 안되서 빌드가 깨짐
         version_navigation = "2.1.0"
+        timberVersion = '4.7.1'
 
     }
 
