@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="editFragment"
+            type="com.example.memo.memoedited.MemoEditedFragment" />
+
+        <variable
             name="editViewModel"
             type="com.example.memo.memoedited.MemoEditedViewModel" />
 
@@ -52,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.addImage()}" />
+            android:onClick="@{() -> editViewModel.addImage(editFragment)}" />
 
 
     </LinearLayout>

@@ -9,18 +9,18 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.memo.R
-import timber.log.Timber
+
 
 class MainActivity : AppCompatActivity() {
 
     val TAG = javaClass.simpleName
     private val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    private val REQUEST_WRITE_CODE = 1989
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Timber.e("mainActivity")
+//        Timber.e("mainActivity")
         if (ContextCompat.checkSelfPermission(
                 this,
                 permissions[0]
@@ -31,9 +31,9 @@ class MainActivity : AppCompatActivity() {
                     permissions[0]
                 )
             ) {
-                Timber.e("ActivityCompat.shouldShowRequestPermissionRationale")
+//                Timber.e("ActivityCompat.shouldShowRequestPermissionRationale")
             } else {
-                Timber.e("ActivityCompat.requestPermissions")
+//                Timber.e("ActivityCompat.requestPermissions")
                 ActivityCompat.requestPermissions(
                     this,
                     permissions,
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         } else {
-            Timber.e("Permission has already been granted")
+//            Timber.e("Permission has already been granted")
         }
     }
 
@@ -55,15 +55,21 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             REQUEST_WRITE_CODE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    Timber.e("Permission was granted")
+//                    Timber.e("Permission was granted")
                 } else {
-                    Timber.e("Permission Denied")
+//                    Timber.e("Permission Denied")
                 }
                 return
             }
             else -> {
-                Timber.e("Ignore all other requests")
+//                Timber.e("Ignore all other requests")
             }
         }
     }
+
+    companion object {
+        private val REQUEST_WRITE_CODE = 1989
+    }
 }
+
+
