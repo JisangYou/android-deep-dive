@@ -14,34 +14,33 @@ import com.example.memo.R
 class MainActivity : AppCompatActivity() {
 
     val TAG = javaClass.simpleName
-    private val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    private val permissions =
+        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        Timber.e("mainActivity")
         if (ContextCompat.checkSelfPermission(
                 this,
                 permissions[0]
+            ) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(
+                this,
+                permissions[1]
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    permissions[0]
-                )
-            ) {
-//                Timber.e("ActivityCompat.shouldShowRequestPermissionRationale")
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[0])) {
+
+            } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[1])) {
+
             } else {
-//                Timber.e("ActivityCompat.requestPermissions")
                 ActivityCompat.requestPermissions(
                     this,
                     permissions,
-                    REQUEST_WRITE_CODE
+                    REQUEST_PERMISSION_CODE
                 )
             }
-        } else {
-//            Timber.e("Permission has already been granted")
         }
     }
 
@@ -53,22 +52,21 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         when (requestCode) {
-            REQUEST_WRITE_CODE -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+            REQUEST_PERMISSION_CODE -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
 //                    Timber.e("Permission was granted")
                 } else {
 //                    Timber.e("Permission Denied")
                 }
                 return
             }
-            else -> {
-//                Timber.e("Ignore all other requests")
-            }
+
         }
     }
 
     companion object {
-        private val REQUEST_WRITE_CODE = 1989
+        private val REQUEST_PERMISSION_CODE = 1989
+
     }
 }
 

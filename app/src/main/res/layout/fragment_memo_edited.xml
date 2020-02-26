@@ -51,12 +51,20 @@
             android:onClick="@{() -> editViewModel.addMemo()}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_addImage"
+        android:id="@+id/fab_addImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_weight="1"
+        android:onClick="@{() -> editViewModel.addImage(editFragment)}" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_pictureImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.addImage(editFragment)}" />
+            android:onClick="@{() -> editViewModel.takePicture(editFragment)}" />
 
 
     </LinearLayout>

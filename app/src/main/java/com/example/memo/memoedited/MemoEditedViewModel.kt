@@ -2,10 +2,11 @@ package com.example.memo.memoedited
 
 import android.app.Application
 import android.content.Intent
+import android.provider.MediaStore
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.memo.MainActivity
 import com.example.memo.data.Memo
 import com.example.memo.data.MemoDao
 import kotlinx.coroutines.Dispatchers
@@ -53,9 +54,29 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
         }
     }
 
+    fun takePicture(fragment: MemoEditedFragment) {
+        var intent: Intent? = null
+        viewModelScope.launch {
+            intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+
+                /**
+                 * 권한 설정을 거절 헀을 수도 있으니까...
+                 */
+                try {
+                    fragment.startActivityForResult(takePictureIntent, TAKE_PICK_CODE)
+                } catch (e: SecurityException) {
+                    Log.e(TAG, e.toString())
+                }
+
+
+            }
+        }
+    }
+
     companion object {
         //image pick code
         const val IMAGE_PICK_CODE = 1000;
+        const val TAKE_PICK_CODE = 1001;
     }
 
 }

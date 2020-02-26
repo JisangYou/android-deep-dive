@@ -74,6 +74,7 @@ class MemoEditedFragment : Fragment() {
         Log.e(TAG, "onActivityResult")
 
         if (resultCode == Activity.RESULT_OK && requestCode == MemoEditedViewModel.IMAGE_PICK_CODE) {
+//            image_view.setImageURI(data?.data)
 
         }
     }
