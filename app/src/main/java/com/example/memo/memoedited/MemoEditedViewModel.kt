@@ -48,8 +48,11 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
     fun addImage(fragment: MemoEditedFragment) {
         var intent: Intent? = null
         viewModelScope.launch {
-            intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent!!.type = "image/*"
+            intent = Intent(Intent.ACTION_PICK)
+//            intent!!.type = "image/*"
+            intent!!.type = MediaStore.Images.Media.CONTENT_TYPE
+            intent!!.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+            intent!!.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             fragment.startActivityForResult(intent, IMAGE_PICK_CODE)
         }
     }
@@ -67,8 +70,6 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
                 } catch (e: SecurityException) {
                     Log.e(TAG, e.toString())
                 }
-
-
             }
         }
     }
