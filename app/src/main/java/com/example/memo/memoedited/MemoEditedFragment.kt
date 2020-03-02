@@ -2,7 +2,9 @@ package com.example.memo.memoedited
 
 
 import android.app.Activity
+import android.content.ClipData
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -68,15 +70,30 @@ class MemoEditedFragment : Fragment() {
     }
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
 
         Log.e(TAG, "onActivityResult")
 
         if (resultCode == Activity.RESULT_OK && requestCode == MemoEditedViewModel.IMAGE_PICK_CODE) {
 //            image_view.setImageURI(data?.data)
 
-            Log.e(TAG, "data == ${data?.data}")
+            Log.e(TAG, "data == ${intent?.data}")
+            val list = ArrayList<String>()
+            if (intent!!.clipData == null) {
+                list.add(intent.data.toString())
+            } else {
+                if (intent.clipData!!.itemCount > 10) {
+                    Log.e(TAG, "아이템 개수가 10개 이상")
+                } else {
+                    for (i in 1..intent.clipData!!.itemCount) {
+                        list.add(intent.clipData.toString())
+                    }
+                    Log.e(TAG, "list.size == " + list.size)
+                }
+            }
+
+
         }
     }
 }

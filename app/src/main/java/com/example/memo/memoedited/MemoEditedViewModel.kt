@@ -49,11 +49,10 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
         var intent: Intent? = null
         viewModelScope.launch {
             intent = Intent(Intent.ACTION_PICK)
-//            intent!!.type = "image/*"
-            intent!!.type = MediaStore.Images.Media.CONTENT_TYPE
+            intent!!.type = "image/*"
             intent!!.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-            intent!!.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-            fragment.startActivityForResult(intent, IMAGE_PICK_CODE)
+            intent!!.type = MediaStore.Images.Media.CONTENT_TYPE
+            fragment.startActivityForResult(Intent.createChooser(intent," 다중 선택"), IMAGE_PICK_CODE)
         }
     }
 
