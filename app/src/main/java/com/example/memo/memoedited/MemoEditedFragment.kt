@@ -19,6 +19,7 @@ import com.example.memo.R
 import com.example.memo.ViewModelFactory
 import com.example.memo.data.MemoDatabase
 import com.example.memo.databinding.FragmentMemoEditedBinding
+import com.example.memo.memolist.MemoAdapter
 
 
 /**
@@ -29,12 +30,13 @@ class MemoEditedFragment : Fragment() {
 
     val TAG = javaClass.simpleName
     private lateinit var editViewModel: MemoEditedViewModel
+    private lateinit var binding: FragmentMemoEditedBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentMemoEditedBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_memo_edited, container, false
         )
         val application = requireNotNull(this.activity).application
@@ -86,10 +88,13 @@ class MemoEditedFragment : Fragment() {
                 if (intent.clipData!!.itemCount > 10) {
                     Log.e(TAG, "아이템 개수가 10개 이상")
                 } else {
-                    for (i in 1..intent.clipData!!.itemCount) {
+                    for (i in 0..intent.clipData!!.itemCount) {
                         list.add(intent.clipData.toString())
                     }
-                    Log.e(TAG, "list.size == " + list.size)
+                    binding.rvImageList.adapter =
+                        MemoEditedAdapter(editViewModel, MemoEditedAdapter.OnClickListener {
+
+                        })
                 }
             }
 
