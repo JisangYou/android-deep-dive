@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
@@ -66,7 +67,13 @@ class MemoEditedFragment : Fragment() {
         editViewModel.description.observe(viewLifecycleOwner, Observer {
             Log.e(TAG, "description  == $it")
         })
-
+        binding.rvImageList.layoutManager = LinearLayoutManager(activity)
+        Log.e(TAG, "layoutManager")
+        binding.rvImageList.adapter =
+            MemoEditedAdapter(editViewModel, MemoEditedAdapter.OnClickListener {
+                Log.e(TAG, "check rv")
+//                (binding.rvImageList.adapter as MemoEditedAdapter).addSubmitList(list)
+            })
 
         return binding.root
     }
@@ -91,10 +98,8 @@ class MemoEditedFragment : Fragment() {
                     for (i in 0..intent.clipData!!.itemCount) {
                         list.add(intent.clipData.toString())
                     }
-                    binding.rvImageList.adapter =
-                        MemoEditedAdapter(editViewModel, MemoEditedAdapter.OnClickListener {
+                    Log.e(TAG, "list == "+list.size)
 
-                        })
                 }
             }
 

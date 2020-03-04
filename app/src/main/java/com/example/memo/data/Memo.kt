@@ -16,12 +16,12 @@ data class Memo(
     val title: String?,
 
     @ColumnInfo(name = "description")
-    val description: String?,
+    val description: String?
 
 //    @TypeConverters(ImgConverters::class)
 //    val url: List<String>?
 
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    val data: ByteArray? = null
+//    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+//    val data: ByteArray? = null
 
 )

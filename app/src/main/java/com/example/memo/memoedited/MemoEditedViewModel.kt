@@ -32,8 +32,7 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
                     0,
                     System.currentTimeMillis(),
                     newTitle,
-                    newDescription,
-                    null
+                    newDescription
                 )
             )
         }

@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_addMemo"
@@ -51,12 +51,12 @@
             android:onClick="@{() -> editViewModel.addMemo()}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_addImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_weight="1"
-        android:onClick="@{() -> editViewModel.addImage(editFragment)}" />
+            android:id="@+id/fab_addImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_weight="1"
+            android:onClick="@{() -> editViewModel.addImage(editFragment)}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_pictureImage"

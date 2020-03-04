@@ -1,22 +1,43 @@
 package com.example.memo
 
+import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.memo.data.Memo
+import com.example.memo.memoedited.MemoEditedAdapter
 import com.example.memo.memolist.MemoAdapter
 
-@BindingAdapter("app:memo_adapter")
-fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
-    view.adapter = adapter
-}
 
-@BindingAdapter("app:memo_items")
+@BindingAdapter("memo_items")
 fun setItems(listView: RecyclerView, items: List<Memo>?) {
     items?.let {
         (listView.adapter as MemoAdapter).submitList(items)
     }
 }
 
+@BindingAdapter("img_items")
+fun setImageItems(recyclerView: RecyclerView, data: List<String>?) {
+    val adapter = recyclerView.adapter as MemoEditedAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("img_url")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+        Glide.with(imgView.context)
+            .load(imgUri)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_launcher_background)
+            )
+            .into(imgView)
+    }
+}
 
 //@BindingAdapter("activity")
 //fun setActivity(activity: MainActivity) {
