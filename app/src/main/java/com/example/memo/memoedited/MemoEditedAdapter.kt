@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.memo.R
 import com.example.memo.data.Memo
 import com.example.memo.databinding.MemoImageItemBinding
 import kotlinx.coroutines.CoroutineScope
@@ -28,7 +31,7 @@ class MemoEditedAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        Log.e(TAG, "MemoEditedAdapter add");
+        Log.e(TAG, "onBindViewHolder$item");
         holder.bind(viewModel, item)
     }
 
@@ -36,18 +39,24 @@ class MemoEditedAdapter(
         adapterScope.launch {
 
             withContext(Dispatchers.Main) {
-                Log.e(TAG, "addSubmitList");
+                Log.e(TAG, "addSubmitList jayyyy");
                 submitList(list)
             }
         }
     }
 
-    class ViewHolder private constructor(private val binding: MemoImageItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder private constructor(private val binding: MemoImageItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewModel: MemoEditedViewModel, item: String) {
 
             binding.viewmodel = viewModel
+            Glide.with(binding.root)
+                .load(item)
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.ic_launcher_foreground)
+                        .error(R.drawable.ic_launcher_background))
+                .into(binding.ivImage)
             binding.executePendingBindings()
         }
 

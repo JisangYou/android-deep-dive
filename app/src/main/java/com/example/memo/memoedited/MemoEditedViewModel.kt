@@ -23,6 +23,7 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
     // Two-way databinding, exposing MutableLiveData
     val title = MutableLiveData<String>()
     val description = MutableLiveData<String>()
+    val imgUriList = MutableLiveData<List<String>>();
 
 
     private suspend fun insert(newTitle: String?, newDescription: String?) {
@@ -52,7 +53,7 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
             intent!!.type = "image/*"
             intent!!.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             intent!!.type = MediaStore.Images.Media.CONTENT_TYPE
-            fragment.startActivityForResult(Intent.createChooser(intent," 다중 선택"), IMAGE_PICK_CODE)
+            fragment.startActivityForResult(Intent.createChooser(intent, " 다중 선택"), IMAGE_PICK_CODE)
         }
     }
 
@@ -70,6 +71,12 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
                     Log.e(TAG, e.toString())
                 }
             }
+        }
+    }
+
+    fun getPicture(str: List<String>) {
+        viewModelScope.launch {
+
         }
     }
 
