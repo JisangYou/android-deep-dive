@@ -16,10 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MemoEditedAdapter(
-    private val viewModel: MemoEditedViewModel,
-    val onClickListener: OnClickListener
-) :
+class MemoEditedAdapter(private val viewModel: MemoEditedViewModel, val onClickListener: OnClickListener) :
     ListAdapter<String, MemoEditedAdapter.ViewHolder>(DiffCallback) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
@@ -31,7 +28,7 @@ class MemoEditedAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        Log.e(TAG, "onBindViewHolder$item");
+        Log.e(TAG, "onBindViewHolder$item")
         holder.bind(viewModel, item)
     }
 
@@ -39,7 +36,7 @@ class MemoEditedAdapter(
         adapterScope.launch {
 
             withContext(Dispatchers.Main) {
-                Log.e(TAG, "addSubmitList jayyyy");
+                Log.e(TAG, "addSubmitList")
                 submitList(list)
             }
         }

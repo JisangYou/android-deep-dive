@@ -40,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -48,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.addMemo()}" />
+            android:onClick="@{() -> editViewModel.addMemo()}"
+            android:visibility="invisible" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_addImage"
@@ -56,7 +58,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.addImage(editFragment)}" />
+            android:onClick="@{() -> editViewModel.addImage(editFragment)}"
+            android:visibility="invisible" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_pictureImage"
@@ -64,8 +67,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.takePicture(editFragment)}" />
+            android:onClick="@{() -> editViewModel.takePicture(editFragment)}"
+            android:visibility="invisible" />
 
-
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_weight="1" />
     </LinearLayout>
 </layout>

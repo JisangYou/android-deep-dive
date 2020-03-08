@@ -5,6 +5,7 @@ import android.content.Intent
 import android.provider.MediaStore
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.memo.data.Memo
@@ -23,8 +24,11 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
     // Two-way databinding, exposing MutableLiveData
     val title = MutableLiveData<String>()
     val description = MutableLiveData<String>()
-    val imgUriList = MutableLiveData<List<String>>();
+    var fbFlag = MutableLiveData<Boolean>();
 
+    init {
+        fbFlag.value = false
+    }
 
     private suspend fun insert(newTitle: String?, newDescription: String?) {
         withContext(Dispatchers.IO) {
@@ -33,7 +37,8 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
                     0,
                     System.currentTimeMillis(),
                     newTitle,
-                    newDescription
+                    newDescription,
+                    "imgUrl"
                 )
             )
         }
@@ -71,12 +76,6 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
                     Log.e(TAG, e.toString())
                 }
             }
-        }
-    }
-
-    fun getPicture(str: List<String>) {
-        viewModelScope.launch {
-
         }
     }
 

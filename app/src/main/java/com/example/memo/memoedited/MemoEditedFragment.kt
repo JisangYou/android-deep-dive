@@ -65,13 +65,30 @@ class MemoEditedFragment : Fragment() {
         editViewModel.description.observe(viewLifecycleOwner, Observer {
             Log.e(TAG, "description  == $it")
         })
-        binding.rvImageList.layoutManager = LinearLayoutManager(activity)
+        binding.rvImageList.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
         Log.e(TAG, "layoutManager")
         binding.rvImageList.adapter =
             MemoEditedAdapter(editViewModel, MemoEditedAdapter.OnClickListener {
-                Log.e(TAG, "check rv")
-//                (binding.rvImageList.adapter as MemoEditedAdapter).addSubmitList(list)
+                /**
+                 * 바인딩 연결
+                 */
             })
+        binding.fabMenu.setOnClickListener {
+            if (!editViewModel.fbFlag.value!!) {
+                editViewModel.fbFlag.value = true
+                binding.fabAddImage.show()
+                binding.fabAddMemo.show()
+                binding.fabPictureImage.show()
+            } else {
+                editViewModel.fbFlag.value = false
+                binding.fabAddImage.hide()
+                binding.fabAddMemo.hide()
+                binding.fabPictureImage.hide()
+            }
+        }
+
 
         return binding.root
     }
@@ -83,26 +100,27 @@ class MemoEditedFragment : Fragment() {
         Log.e(TAG, "onActivityResult")
 
         if (resultCode == Activity.RESULT_OK && requestCode == MemoEditedViewModel.IMAGE_PICK_CODE) {
-//            image_view.setImageURI(data?.data)
 
             val list = ArrayList<String>()
             if (intent!!.clipData == null) {
+                /**
+                 * null이니 없어도 됨.
+                 */
 //                list.add(intent.data.toString())
             } else {
                 if (intent.clipData!!.itemCount > 10) {
                     Log.e(TAG, "아이템 개수가 10개 이상")
                 } else {
-
                     for (i in 0 until intent.clipData!!.itemCount) {
-
-                        Log.e(TAG, "intent.clipData!!.getItemAt(i) == " + intent.clipData!!.getItemAt(i).uri.path)
+                        Log.e(
+                            TAG,
+                            "intent.clipData!!.getItemAt(i) == " + intent.clipData!!.getItemAt(i).uri.path
+                        )
                         list.add(intent.clipData!!.getItemAt(i).uri.toString())
-                        (binding.rvImageList.adapter as MemoEditedAdapter).addSubmitList(list)
                     }
-
+                    (binding.rvImageList.adapter as MemoEditedAdapter).addSubmitList(list)
                 }
             }
         }
-
     }
 }

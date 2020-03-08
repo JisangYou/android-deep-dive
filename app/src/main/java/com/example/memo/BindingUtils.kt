@@ -12,7 +12,7 @@ import com.example.memo.memolist.MemoAdapter
 
 
 @BindingAdapter("memo_items")
-fun setItems(listView: RecyclerView, items: List<Memo>?) {
+fun setMemoItems(listView: RecyclerView, items: List<Memo>?) {
     items?.let {
         (listView.adapter as MemoAdapter).submitList(items)
     }
@@ -39,7 +39,3 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
-//@BindingAdapter("activity")
-//fun setActivity(activity: MainActivity) {
-//    activity?.let {  }
-//}
