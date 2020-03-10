@@ -10,12 +10,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.memo.data.Memo
 import com.example.memo.data.MemoDao
+import com.example.memo.data.MemoDatabase
+import com.example.memo.data.MemoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class MemoEditedViewModel(private val memoDao: MemoDao, application: Application) :
+class MemoEditedViewModel(application: Application) :
     AndroidViewModel(application) {
 
     // xml 상에서 세팅된 변수 값
@@ -25,29 +27,18 @@ class MemoEditedViewModel(private val memoDao: MemoDao, application: Application
     val title = MutableLiveData<String>()
     val description = MutableLiveData<String>()
     var fbFlag = MutableLiveData<Boolean>();
+    var urlList = MutableLiveData<List<String>>()
+    private val memoRepository: MemoRepository
 
     init {
         fbFlag.value = false
+        val memoDao = MemoDatabase.getInstance(application).memoDao()
+        memoRepository = MemoRepository(memoDao)
     }
-
-    private suspend fun insert(newTitle: String?, newDescription: String?) {
-        withContext(Dispatchers.IO) {
-            memoDao.insertMemo(
-                Memo(
-                    0,
-                    System.currentTimeMillis(),
-                    newTitle,
-                    newDescription,
-                    "imgUrl"
-                )
-            )
-        }
-    }
-
 
     fun addMemo() {
         viewModelScope.launch {
-            insert(title.value, description.value)
+            memoRepository.insert(title.value, description.value, urlList.value)
         }
     }
 

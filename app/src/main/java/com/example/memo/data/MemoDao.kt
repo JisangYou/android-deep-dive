@@ -18,8 +18,8 @@ interface MemoDao {
     fun updateMemo(memo: Memo)
 
     @Query("SELECT * FROM memos")
-//    fun getMemos(): LiveData<List<Memo>>
-    fun getMemos(): List<Memo>
+    fun getMemos(): LiveData<List<Memo>>
+//    fun getMemos(): List<Memo>
 
 //    @Query("SELECT * FROM memos WHERE memoId=:memoId")
 //    fun getMemoById(memoId: String)

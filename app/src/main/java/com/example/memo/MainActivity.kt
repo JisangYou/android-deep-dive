@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val REQUEST_PERMISSION_CODE = 1989
+        private const val REQUEST_PERMISSION_CODE = 1989
 
     }
 }

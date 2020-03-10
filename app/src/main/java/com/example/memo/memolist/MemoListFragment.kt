@@ -39,9 +39,8 @@ class MemoListFragment : Fragment() {
             inflater, R.layout.fragment_memo_list, container, false
         )
         val application = requireNotNull(this.activity).application
-        val dataSource = MemoDatabase.getInstance(application).memoDao
         val viewModelFactory =
-            ViewModelFactory(dataSource, application)
+            ViewModelFactory(application)
 
         memoViewModel =
             ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)

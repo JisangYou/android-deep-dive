@@ -1,7 +1,6 @@
 package com.example.memo.data
 
 import androidx.room.*
-import com.example.memo.ImgConverters
 
 @Entity(tableName = "memos")
 data class Memo(
@@ -19,6 +18,6 @@ data class Memo(
     val description: String?,
 
     @ColumnInfo(name = "imgUrl")
-    val imgUrl: String?
+    val imgUrl: List<String>?
 
 )

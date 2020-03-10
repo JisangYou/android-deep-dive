@@ -39,8 +39,7 @@ class MemoEditedFragment : Fragment() {
             inflater, R.layout.fragment_memo_edited, container, false
         )
         val application = requireNotNull(this.activity).application
-        val dataSource = MemoDatabase.getInstance(application).memoDao
-        val viewModelFactory = ViewModelFactory(dataSource, application)
+        val viewModelFactory = ViewModelFactory(application)
 
         editViewModel =
             ViewModelProvider(this, viewModelFactory).get(MemoEditedViewModel::class.java)
@@ -114,10 +113,11 @@ class MemoEditedFragment : Fragment() {
                     for (i in 0 until intent.clipData!!.itemCount) {
                         Log.e(
                             TAG,
-                            "intent.clipData!!.getItemAt(i) == " + intent.clipData!!.getItemAt(i).uri.path
+                            "intent.clipData!!.getItemAt(i) == " + intent.clipData!!.getItemAt(i).uri.toString()
                         )
                         list.add(intent.clipData!!.getItemAt(i).uri.toString())
                     }
+                    editViewModel.urlList.value = list
                     (binding.rvImageList.adapter as MemoEditedAdapter).addSubmitList(list)
                 }
             }

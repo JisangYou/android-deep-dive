@@ -1,17 +1,32 @@
 package com.example.memo.data
 
 import androidx.room.TypeConverter
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.util.*
 
 class Converters {
+    private var gson = Gson()
     @TypeConverter
-    fun listToString(value: List<String>?): String? {
+    fun toListOfStrings(urlStrList: List<String>?): String? {
 
-        return Gson
+        return gson.toJson(urlStrList)
     }
 
+    @TypeConverter
+    fun fromListOfStrings(url: String): List<String>? {
+        val listType = object : TypeToken<List<String>>() {}.type
+
+        return gson.fromJson(url, listType)
+    }
+
+
 //    @TypeConverter
-//    fun dateTofromUrlToString(date: Date?): Long? {
-//        return date?.time?.toLong()
+//    fun toListOfStrings(flatStringList: String): List<String> {
+//        return flatStringList.split(",")
+//    }
+//    @TypeConverter
+//    fun fromListOfStrings(listOfString: List<String>): String {
+//        return listOfString.joinToString(",")
 //    }
 }
