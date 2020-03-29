@@ -15,7 +15,11 @@ class MainActivity : AppCompatActivity() {
 
     val TAG = javaClass.simpleName
     private val permissions =
-        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+        arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA
+        )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,15 +28,18 @@ class MainActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(
                 this,
                 permissions[0]
-            ) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(
+            ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                this, permissions[1]
+            ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
                 this,
-                permissions[1]
+                permissions[2]
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[0])) {
 
             } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[1])) {
+
+            } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[2])) {
 
             } else {
                 ActivityCompat.requestPermissions(
@@ -53,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         when (requestCode) {
             REQUEST_PERMISSION_CODE -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED && grantResults[2] == PackageManager.PERMISSION_GRANTED)) {
 //                    Timber.e("Permission was granted")
                 } else {
 //                    Timber.e("Permission Denied")

@@ -3,8 +3,11 @@ package com.example.memo.memoedited
 import android.R.attr.data
 import android.app.Activity
 import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +19,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
-import com.example.memo.data.MemoDatabase
 import com.example.memo.databinding.FragmentMemoEditedBinding
-import kotlin.collections.ArrayList
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
+import java.nio.channels.FileChannel
 
 
 /**
@@ -92,11 +98,40 @@ class MemoEditedFragment : Fragment() {
         return binding.root
     }
 
+    //TODO test =========================================
+
+    @Throws(IOException::class)
+    private fun copyFile(sourceFile: File, destFile: File) {
+        if (!sourceFile.exists()) {
+            return
+        }
+        var source: FileChannel? = null
+        var destination: FileChannel? = null
+        source = FileInputStream(sourceFile).channel
+        destination = FileOutputStream(destFile).channel
+        if (destination != null && source != null) {
+            destination.transferFrom(source, 0, source.size())
+        }
+        if (source != null) {
+            source.close()
+        }
+        if (destination != null) {
+            destination.close()
+        }
+    }
+
+    private fun getPath(contentUri: Uri): String? {
+        val proj = arrayOf(MediaStore.Video.Media.DATA)
+        val cursor: Cursor = this.activity!!.managedQuery(contentUri, proj, null, null, null)
+        val column_index: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor.moveToFirst()
+        return cursor.getString(column_index)
+    }
+
+    //TODO test =========================================
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
-
-        Log.e(TAG, "onActivityResult")
 
         if (resultCode == Activity.RESULT_OK && requestCode == MemoEditedViewModel.IMAGE_PICK_CODE) {
 
@@ -111,11 +146,13 @@ class MemoEditedFragment : Fragment() {
                     Log.e(TAG, "아이템 개수가 10개 이상")
                 } else {
                     for (i in 0 until intent.clipData!!.itemCount) {
-                        Log.e(
-                            TAG,
-                            "intent.clipData!!.getItemAt(i) == " + intent.clipData!!.getItemAt(i).uri.toString()
-                        )
+
                         list.add(intent.clipData!!.getItemAt(i).uri.toString())
+                        val destFile =
+                            File(context!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString() + ".jpg")
+                        Log.e(TAG, "check == $destFile")
+                        copyFile(File(getPath(intent.getData()!!)), destFile)
+
                     }
                     editViewModel.urlList.value = list
                     (binding.rvImageList.adapter as MemoEditedAdapter).addSubmitList(list)
