@@ -1,8 +1,8 @@
-package com.example.memo.data
+package com.example.memo.data.local.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.memo.data.Memo
+import com.example.memo.data.model.db.Memo
 
 @Dao
 interface MemoDao {

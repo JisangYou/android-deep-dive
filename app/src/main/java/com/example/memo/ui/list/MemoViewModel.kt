@@ -1,15 +1,10 @@
-package com.example.memo.memolist
+package com.example.memo.ui.list
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.memo.data.Memo
-import com.example.memo.data.MemoDao
-import com.example.memo.data.MemoDatabase
-import com.example.memo.data.MemoRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.example.memo.data.model.db.Memo
+import com.example.memo.data.local.MemoDatabase
+import com.example.memo.data.local.MemoRepository
 
 class MemoViewModel(application: Application) :
     AndroidViewModel(application) {

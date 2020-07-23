@@ -6,9 +6,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.memo.data.Memo
-import com.example.memo.memoedited.MemoEditedAdapter
-import com.example.memo.memolist.MemoAdapter
+import com.example.memo.data.model.db.Memo
+import com.example.memo.ui.edited.MemoEditedAdapter
+import com.example.memo.ui.list.MemoAdapter
 
 
 @BindingAdapter("memo_items")

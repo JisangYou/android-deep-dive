@@ -61,6 +61,11 @@ dependencies {
     // Gson
     implementation "com.google.code.gson:gson:$version_gson"
 
+    // dependency injection
+    implementation "com.google.dagger:dagger:$dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$dagger2Version"
 
     // 테스트 세팅
     testImplementation 'junit:junit:4.12'

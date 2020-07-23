@@ -15,7 +15,7 @@ buildscript {
         timberVersion = '4.7.1'
         version_glide = '4.8.0'
         version_gson = '2.8.6'
-
+        dagger2Version = '2.27'
     }
 
     repositories {

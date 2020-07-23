@@ -1,20 +1,15 @@
-package com.example.memo.memoedited
+package com.example.memo.ui.edited
 
 import android.app.Application
 import android.content.Intent
 import android.provider.MediaStore
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.memo.data.Memo
-import com.example.memo.data.MemoDao
-import com.example.memo.data.MemoDatabase
-import com.example.memo.data.MemoRepository
-import kotlinx.coroutines.Dispatchers
+import com.example.memo.data.local.MemoDatabase
+import com.example.memo.data.local.MemoRepository
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class MemoEditedViewModel(application: Application) :

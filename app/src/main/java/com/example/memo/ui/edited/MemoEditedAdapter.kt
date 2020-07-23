@@ -1,4 +1,4 @@
-package com.example.memo.memoedited
+package com.example.memo.ui.edited
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.memo.R
-import com.example.memo.data.Memo
+import com.example.memo.data.model.db.Memo
 import com.example.memo.databinding.MemoImageItemBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

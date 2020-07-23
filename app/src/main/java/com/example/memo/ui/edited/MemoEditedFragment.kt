@@ -1,6 +1,5 @@
-package com.example.memo.memoedited
+package com.example.memo.ui.edited
 
-import android.R.attr.data
 import android.app.Activity
 import android.content.Intent
 import android.database.Cursor

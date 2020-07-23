@@ -1,6 +1,8 @@
-package com.example.memo.data
+package com.example.memo.data.local
 
 import androidx.lifecycle.LiveData
+import com.example.memo.data.local.db.dao.MemoDao
+import com.example.memo.data.model.db.Memo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

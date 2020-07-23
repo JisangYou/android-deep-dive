@@ -1,4 +1,4 @@
-package com.example.memo.memolist
+package com.example.memo.ui.list
 
 
 import android.os.Bundle
@@ -11,12 +11,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
-import com.example.memo.data.Memo
-import com.example.memo.data.MemoDatabase
 
 import com.example.memo.databinding.FragmentMemoListBinding
 

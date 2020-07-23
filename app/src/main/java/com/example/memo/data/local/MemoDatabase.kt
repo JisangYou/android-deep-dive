@@ -1,9 +1,9 @@
-package com.example.memo.data
+package com.example.memo.data.local
 
 import android.content.Context
-import android.util.Log
 import androidx.room.*
-import kotlinx.coroutines.CoroutineScope
+import com.example.memo.data.local.db.dao.MemoDao
+import com.example.memo.data.model.db.Memo
 
 @Database(entities = [Memo::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
@@ -26,7 +26,8 @@ abstract class MemoDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): MemoDatabase {
             synchronized(this) {
-                var instance = INSTANCE
+                var instance =
+                    INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,

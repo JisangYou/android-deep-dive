@@ -3,10 +3,9 @@ package com.example.memo
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.memo.data.MemoDao
-import com.example.memo.memodetail.MemoDetailViewModel
-import com.example.memo.memoedited.MemoEditedViewModel
-import com.example.memo.memolist.MemoViewModel
+import com.example.memo.ui.detail.MemoDetailViewModel
+import com.example.memo.ui.edited.MemoEditedViewModel
+import com.example.memo.ui.list.MemoViewModel
 
 class ViewModelFactory(private val application: Application) :
     ViewModelProvider.Factory {

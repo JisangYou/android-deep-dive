@@ -8,11 +8,11 @@
 
         <variable
             name="editFragment"
-            type="com.example.memo.memoedited.MemoEditedFragment" />
+            type="com.example.memo.ui.edited.MemoEditedFragment" />
 
         <variable
             name="editViewModel"
-            type="com.example.memo.memoedited.MemoEditedViewModel" />
+            type="com.example.memo.ui.edited.MemoEditedViewModel" />
 
     </data>
 

@@ -7,13 +7,13 @@
 
         <variable
             name="memoViewModel"
-            type="com.example.memo.memolist.MemoViewModel" />
+            type="com.example.memo.ui.list.MemoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".memolist.MemoLIstFragment">
+        tools:context=".ui.list.MemoLIstFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_memoList"

@@ -6,7 +6,7 @@
     app:startDestination="@id/fragment_memo_list">
     <fragment
         android:id="@+id/fragment_memo_list"
-        android:name="com.example.memo.memolist.MemoListFragment"
+        android:name="com.example.memo.ui.list.MemoListFragment"
         android:label="@string/fragment_memo_list"
         tools:layout="@layout/fragment_memo_list">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_memo_detail"
-        android:name="com.example.memo.memodetail.MemoDetailFragment"
+        android:name="com.example.memo.ui.detail.MemoDetailFragment"
         android:label="fragment_memo_detail"
         tools:layout="@layout/fragment_memo_detail">
         <argument
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_memo_edited"
-        android:name="com.example.memo.memoedited.MemoEditedFragment"
+        android:name="com.example.memo.ui.edited.MemoEditedFragment"
         android:label="fragment_memo_edited"
         tools:layout="@layout/fragment_memo_edited">
 

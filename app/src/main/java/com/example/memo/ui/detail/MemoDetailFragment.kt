@@ -1,4 +1,4 @@
-package com.example.memo.memodetail
+package com.example.memo.ui.detail
 
 
 import android.os.Bundle

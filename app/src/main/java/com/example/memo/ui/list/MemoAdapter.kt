@@ -1,4 +1,4 @@
-package com.example.memo.memolist
+package com.example.memo.ui.list
 
 
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.memo.data.Memo
+import com.example.memo.data.model.db.Memo
 import com.example.memo.databinding.MemoItemBinding
-import com.example.memo.memolist.MemoAdapter.ViewHolder
+import com.example.memo.ui.list.MemoAdapter.ViewHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

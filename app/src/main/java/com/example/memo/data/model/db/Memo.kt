@@ -1,4 +1,4 @@
-package com.example.memo.data
+package com.example.memo.data.model.db
 
 import androidx.room.*
 

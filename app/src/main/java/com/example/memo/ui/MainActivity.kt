@@ -1,11 +1,9 @@
-package com.example.memo
+package com.example.memo.ui
 
 import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.memo.R

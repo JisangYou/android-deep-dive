@@ -8,7 +8,7 @@
 
         <variable
             name="memo"
-            type="com.example.memo.data.Memo" />
+            type="com.example.memo.data.model.db.Memo" />
 
         <variable
             name="viewmodel"
