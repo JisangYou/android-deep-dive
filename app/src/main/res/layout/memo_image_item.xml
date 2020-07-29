@@ -6,11 +6,11 @@
 
         <variable
             name="viewmodel"
-            type="com.example.memo.memoedited.MemoEditedViewModel" />
+            type="com.example.memo.ui.edited.MemoEditedViewModel" />
 
         <variable
             name="image"
-            type="com.example.memo.memoedited.MemoEditedViewModel" />
+            type="com.example.memo.ui.edited.MemoEditedViewModel" />
     </data>
 
 

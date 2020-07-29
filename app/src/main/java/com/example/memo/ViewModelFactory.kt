@@ -13,17 +13,14 @@ class ViewModelFactory(private val application: Application) :
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MemoViewModel::class.java)) {
             return MemoViewModel(
-
                 application
             ) as T
         } else if (modelClass.isAssignableFrom(MemoDetailViewModel::class.java)) {
             return MemoDetailViewModel(
-
                 application
             ) as T
         } else if (modelClass.isAssignableFrom(MemoEditedViewModel::class.java)) {
             return MemoEditedViewModel(
-
                 application
             ) as T
         }
