@@ -1,11 +1,11 @@
-package com.example.memo.data.local
+package com.example.memo.util
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
 
-class Converters {
+class ConvertersUtils {
     private var gson = Gson()
     @TypeConverter
     fun toListOfStrings(urlStrList: List<String>?): String? {
@@ -19,7 +19,6 @@ class Converters {
 
         return gson.fromJson(url, listType)
     }
-
 
 //    @TypeConverter
 //    fun toListOfStrings(flatStringList: String): List<String> {

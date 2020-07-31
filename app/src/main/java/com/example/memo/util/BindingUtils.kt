@@ -1,4 +1,4 @@
-package com.example.memo
+package com.example.memo.util
 
 import android.widget.ImageView
 import androidx.core.net.toUri
@@ -6,6 +6,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.memo.R
 import com.example.memo.data.model.db.Memo
 import com.example.memo.ui.edited.MemoEditedAdapter
 import com.example.memo.ui.list.MemoAdapter

@@ -2,11 +2,12 @@ package com.example.memo.data.local
 
 import android.content.Context
 import androidx.room.*
+import com.example.memo.util.ConvertersUtils
 import com.example.memo.data.local.db.dao.MemoDao
 import com.example.memo.data.model.db.Memo
 
 @Database(entities = [Memo::class], version = 2, exportSchema = false)
-@TypeConverters(Converters::class)
+@TypeConverters(ConvertersUtils::class)
 abstract class MemoDatabase : RoomDatabase() {
     abstract fun memoDao(): MemoDao
 
