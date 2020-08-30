@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 /**
  * Adapter for the task list. Has a reference to the [TasksViewModel] to send actions back to it.
  */
-class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnClickListener) :
+class MemoAdapter(private val viewModel: MemoViewModel) :
     ListAdapter<Memo, ViewHolder>(DiffCallback) {
 
     private val adapterScope = CoroutineScope(Dispatchers.Default)
@@ -41,12 +41,11 @@ class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnC
         }
     }
 
-    class ViewHolder private constructor(private val binding: MemoItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder private constructor(private val binding: MemoItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewModel: MemoViewModel, item: Memo) {
 
-            binding.viewmodel = viewModel
+            binding.viewModel = viewModel
             binding.memo = item
             binding.executePendingBindings()
         }
@@ -69,10 +68,6 @@ class MemoAdapter(private val viewModel: MemoViewModel, val onClickListener: OnC
         override fun areContentsTheSame(oldItem: Memo, newItem: Memo): Boolean {
             return oldItem.memoId == newItem.memoId
         }
-    }
-
-    class OnClickListener(val clickListener: (memoId: Long) -> Unit) {
-        fun onClick(memo: Memo) = clickListener(memo.memoId)
     }
 }
 

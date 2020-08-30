@@ -19,7 +19,6 @@ interface MemoDao {
 
     @Query("SELECT * FROM memos")
     fun getMemos(): LiveData<List<Memo>>
-//    fun getMemos(): List<Memo>
 
 //    @Query("SELECT * FROM memos WHERE memoId=:memoId")
 //    fun getMemoById(memoId: String)
