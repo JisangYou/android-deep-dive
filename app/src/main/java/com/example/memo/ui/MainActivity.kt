@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.memo.R
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -59,9 +60,9 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             REQUEST_PERMISSION_CODE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED && grantResults[2] == PackageManager.PERMISSION_GRANTED)) {
-//                    Timber.e("Permission was granted")
+                    Timber.e("Permission was granted")
                 } else {
-//                    Timber.e("Permission Denied")
+                    Timber.e("Permission Denied")
                 }
                 return
             }

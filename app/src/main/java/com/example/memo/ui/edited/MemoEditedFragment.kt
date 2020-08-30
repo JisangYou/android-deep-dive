@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
 import com.example.memo.databinding.FragmentMemoEditedBinding
+import timber.log.Timber
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -63,16 +64,16 @@ class MemoEditedFragment : Fragment() {
 
 
         editViewModel.title.observe(viewLifecycleOwner, Observer {
-            Log.e(TAG, "title  == $it")
+            Timber.e(TAG, "title  == $it")
         })
 
         editViewModel.description.observe(viewLifecycleOwner, Observer {
-            Log.e(TAG, "description  == $it")
+            Timber.e(TAG, "description  == $it")
         })
         binding.rvImageList.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
-        Log.e(TAG, "layoutManager")
+        Timber.e(TAG, "layoutManager")
         binding.rvImageList.adapter =
             MemoEditedAdapter(editViewModel, MemoEditedAdapter.OnClickListener {
                 /**
@@ -142,14 +143,14 @@ class MemoEditedFragment : Fragment() {
 //                list.add(intent.data.toString())
             } else {
                 if (intent.clipData!!.itemCount > 10) {
-                    Log.e(TAG, "아이템 개수가 10개 이상")
+                    Timber.e(TAG, "아이템 개수가 10개 이상")
                 } else {
                     for (i in 0 until intent.clipData!!.itemCount) {
 
                         list.add(intent.clipData!!.getItemAt(i).uri.toString())
                         val destFile =
                             File(context!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString() + ".jpg")
-                        Log.e(TAG, "check == $destFile")
+                        Timber.e(TAG, "check == $destFile")
                         copyFile(File(getPath(intent.getData()!!)), destFile)
 
                     }

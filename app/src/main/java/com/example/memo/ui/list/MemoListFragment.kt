@@ -2,7 +2,6 @@ package com.example.memo.ui.list
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -71,7 +70,6 @@ class MemoListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        Log.e(TAG, "onResume")
     }
 
     private fun getMemoList() {
