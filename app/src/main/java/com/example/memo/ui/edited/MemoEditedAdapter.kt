@@ -47,13 +47,13 @@ class MemoEditedAdapter(private val viewModel: MemoEditedViewModel, val onClickL
         fun bind(viewModel: MemoEditedViewModel, item: String) {
 
             binding.viewmodel = viewModel
-            Glide.with(binding.root)
-                .load(item)
-                .apply(
-                    RequestOptions()
-                        .placeholder(R.drawable.ic_launcher_foreground)
-                        .error(R.drawable.ic_launcher_background))
-                .into(binding.ivImage)
+//            Glide.with(binding.root)
+//                .load(item)
+//                .apply(
+//                    RequestOptions()
+//                        .placeholder(R.drawable.ic_launcher_foreground)
+//                        .error(R.drawable.ic_launcher_background))
+//                .into(binding.ivImage)
             binding.executePendingBindings()
         }
 

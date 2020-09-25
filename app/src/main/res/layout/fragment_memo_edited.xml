@@ -21,18 +21,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <EditText
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="60dp"
             android:text="@={editViewModel.title}" />
 
         <EditText
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="240dp"
             android:text="@={editViewModel.description}" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -43,38 +42,35 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_addMemo"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.addMemo()}"
-            android:visibility="invisible" />
+            android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_addImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.addImage(editFragment)}"
-            android:visibility="invisible" />
+            <Button
+                android:text="add"
+                android:id="@+id/btn_addMemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> editViewModel.addMemo()}"
+                android:layout_weight="1" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_pictureImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_weight="1"
-            android:onClick="@{() -> editViewModel.takePicture(editFragment)}"
-            android:visibility="invisible" />
+            <Button
+                android:text="album"
+                android:id="@+id/btn_addImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> editViewModel.addImage(editFragment)}"
+                android:layout_weight="1" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_weight="1" />
+            <Button
+                android:text="picture"
+                android:id="@+id/btn_pictureImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> editViewModel.takePicture(editFragment)}"
+                android:layout_weight="1" />
+
+        </LinearLayout>
     </LinearLayout>
 </layout>

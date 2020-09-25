@@ -80,19 +80,7 @@ class MemoEditedFragment : Fragment() {
                  * 바인딩 연결
                  */
             })
-        binding.fabMenu.setOnClickListener {
-            if (!editViewModel.fbFlag.value!!) {
-                editViewModel.fbFlag.value = true
-                binding.fabAddImage.show()
-                binding.fabAddMemo.show()
-                binding.fabPictureImage.show()
-            } else {
-                editViewModel.fbFlag.value = false
-                binding.fabAddImage.hide()
-                binding.fabAddMemo.hide()
-                binding.fabPictureImage.hide()
-            }
-        }
+
 
 
         return binding.root
@@ -149,7 +137,10 @@ class MemoEditedFragment : Fragment() {
 
                         list.add(intent.clipData!!.getItemAt(i).uri.toString())
                         val destFile =
-                            File(context!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString() + ".jpg")
+                            File(
+                                context!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+                                    .toString() + ".jpg"
+                            )
                         Timber.e(TAG, "check == $destFile")
                         copyFile(File(getPath(intent.getData()!!)), destFile)
 
