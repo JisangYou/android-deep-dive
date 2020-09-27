@@ -11,14 +11,14 @@
             type="com.example.memo.data.model.db.Memo" />
 
         <variable
-            name="viewModel"
+            name="vm"
             type="com.example.memo.ui.list.MemoViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()->viewModel.itemClick(memo)}"
+        android:onClick="@{()->vm.openTask(memo.memoId)}"
         android:orientation="vertical">
 
         <LinearLayout

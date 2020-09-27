@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.memo.EventObserver
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
 
@@ -25,7 +26,7 @@ class MemoListFragment : Fragment() {
 
     private lateinit var binding: FragmentMemoListBinding
     private val TAG = javaClass.simpleName
-    private lateinit var memoViewModel: MemoViewModel
+    private lateinit var viewModel: MemoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +38,15 @@ class MemoListFragment : Fragment() {
         )
         val application = requireNotNull(this.activity).application
         val viewModelFactory = ViewModelFactory(application)
-        memoViewModel = ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
         binding.rvMemoList.layoutManager = LinearLayoutManager(activity)
-        binding.viewModel = memoViewModel
+        binding.viewModel = viewModel
         binding.view = this
         binding.lifecycleOwner = this
-        binding.rvMemoList.adapter = MemoAdapter(memoViewModel)
+        binding.rvMemoList.adapter = MemoAdapter(viewModel)
+        viewModel.openTaskEvent.observe(viewLifecycleOwner, EventObserver {
+            navigateToMemoDetail(it)
+        })
 
         return binding.root
     }
@@ -52,12 +56,12 @@ class MemoListFragment : Fragment() {
         /**
          * 생명주기를 고려한 메모리스트 로딩
          */
-        getMemoList()
+        memoList()
     }
 
 
-    private fun getMemoList() {
-        memoViewModel.allMemos.observe(viewLifecycleOwner, Observer {
+    private fun memoList() {
+        viewModel.allMemos.observe(viewLifecycleOwner, Observer {
             it?.let {
                 (binding.rvMemoList.adapter as MemoAdapter).addSubmitList(it)
             }
@@ -67,16 +71,17 @@ class MemoListFragment : Fragment() {
     /**
      * 뷰에 연결
      */
-    fun navigateToMemoEdited() {
+    fun navigateToMemoAdd() {
         val action = MemoListFragmentDirections
             .actionFragmentMemoListToMemoEdited()
         findNavController().navigate(action)
     }
 
-    private fun navigateToMemoDetail(memoId: Long) {
-        val action = MemoListFragmentDirections.actionFragmentMemoListToMemoDetailFragment(memoId)
-        Timber.e("move to DetailFragment")
+    fun navigateToMemoDetail(memoId: Long) {
+        val action = MemoListFragmentDirections.actionFragmentMemoListToMemoDetailFragment()
+        Timber.d("move to DetailFragment$memoId")
         findNavController().navigate(action)
     }
+
 
 }

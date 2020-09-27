@@ -55,34 +55,31 @@ class MemoEditedFragment : Fragment() {
          * this의 의미,
          * 이게 왜 되는지에 대한 연구.
          */
-        binding.editFragment = this
+        binding.fm = this
         /**
          * View model과 data 바인딩 세팅
          */
-        binding.editViewModel = editViewModel
+        binding.vm = editViewModel
         binding.lifecycleOwner = this
 
 
         editViewModel.title.observe(viewLifecycleOwner, Observer {
-            Timber.e(TAG, "title  == $it")
+            Timber.d(TAG, "title  == $it")
         })
 
         editViewModel.description.observe(viewLifecycleOwner, Observer {
-            Timber.e(TAG, "description  == $it")
+            Timber.d(TAG, "description  == $it")
         })
         binding.rvImageList.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
-        Timber.e(TAG, "layoutManager")
+        Timber.d(TAG, "layoutManager")
         binding.rvImageList.adapter =
             MemoEditedAdapter(editViewModel, MemoEditedAdapter.OnClickListener {
                 /**
                  * 바인딩 연결
                  */
             })
-
-
-
         return binding.root
     }
 
@@ -131,7 +128,7 @@ class MemoEditedFragment : Fragment() {
 //                list.add(intent.data.toString())
             } else {
                 if (intent.clipData!!.itemCount > 10) {
-                    Timber.e(TAG, "아이템 개수가 10개 이상")
+                    Timber.d(TAG, "아이템 개수가 10개 이상")
                 } else {
                     for (i in 0 until intent.clipData!!.itemCount) {
 
@@ -141,7 +138,7 @@ class MemoEditedFragment : Fragment() {
                                 context!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
                                     .toString() + ".jpg"
                             )
-                        Timber.e(TAG, "check == $destFile")
+                        Timber.d(TAG, "check == $destFile")
                         copyFile(File(getPath(intent.getData()!!)), destFile)
 
                     }

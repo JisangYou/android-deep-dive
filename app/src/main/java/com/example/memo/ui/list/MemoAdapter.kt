@@ -45,7 +45,7 @@ class MemoAdapter(private val viewModel: MemoViewModel) :
 
         fun bind(viewModel: MemoViewModel, item: Memo) {
 
-            binding.viewModel = viewModel
+            binding.vm = viewModel
             binding.memo = item
             binding.executePendingBindings()
         }

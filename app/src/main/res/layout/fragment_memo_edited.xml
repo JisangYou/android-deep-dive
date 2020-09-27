@@ -6,11 +6,11 @@
     <data>
 
         <variable
-            name="editFragment"
+            name="fm"
             type="com.example.memo.ui.edited.MemoEditedFragment" />
 
         <variable
-            name="editViewModel"
+            name="vm"
             type="com.example.memo.ui.edited.MemoEditedViewModel" />
 
     </data>
@@ -25,18 +25,18 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@={editViewModel.title}" />
+            android:text="@={vm.title}" />
 
         <EditText
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="240dp"
-            android:text="@={editViewModel.description}" />
+            android:text="@={vm.description}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_imageList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="@{() -> editViewModel.addMemo()}"
+                android:onClick="@{() -> vm.addMemo()}"
                 android:text="add" />
 
             <Button
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="@{() -> editViewModel.addImage(editFragment)}"
+                android:onClick="@{() -> vm.addImage(fm)}"
                 android:text="album" />
 
             <Button
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="@{() -> editViewModel.takePicture(editFragment)}"
+                android:onClick="@{() -> vm.takePicture(fm)}"
                 android:text="picture" />
 
         </LinearLayout>

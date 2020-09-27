@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_fragment_memo_list_to_memoDetailFragment"
             app:destination="@id/fragment_memo_detail" />
+        <argument
+            android:name="memoId"
+            app:argType="long" />
         <action
             android:id="@+id/action_fragment_memo_list_to_memoEdited"
             app:destination="@id/fragment_memo_edited" />
@@ -20,12 +23,7 @@
         android:id="@+id/fragment_memo_detail"
         android:name="com.example.memo.ui.detail.MemoDetailFragment"
         android:label="fragment_memo_detail"
-        tools:layout="@layout/fragment_memo_detail">
-        <argument
-            android:name="memoId"
-            app:argType="long"
-            app:nullable="false" />
-    </fragment>
+        tools:layout="@layout/fragment_memo_detail"/>
     <fragment
         android:id="@+id/fragment_memo_edited"
         android:name="com.example.memo.ui.edited.MemoEditedFragment"

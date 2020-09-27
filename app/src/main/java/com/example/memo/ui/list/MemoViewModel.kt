@@ -2,6 +2,7 @@ package com.example.memo.ui.list
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.example.memo.Event
 import com.example.memo.data.model.db.Memo
 import com.example.memo.data.local.MemoDatabase
 import com.example.memo.data.local.MemoRepository
@@ -13,6 +14,8 @@ class MemoViewModel(application: Application) :
     val TAG = javaClass.simpleName
     private val memoRepository: MemoRepository
     val allMemos: LiveData<List<Memo>>
+    private val _openTaskEvent = MutableLiveData<Event<Long>>()
+    val openTaskEvent: LiveData<Event<Long>> = _openTaskEvent
 
     init {
 
@@ -22,8 +25,10 @@ class MemoViewModel(application: Application) :
         allMemos = memoRepository.getAllMemos()
     }
 
-    fun itemClick(memo: Memo) {
-        //TODO 뷰에 해당 id 보낼 것
-        Timber.d("itemClick == "+ memo.title)
+    /**
+     * Called by Data Binding.
+     */
+    fun openTask(memoId: Long) {
+        _openTaskEvent.value = Event(memoId)
     }
 }

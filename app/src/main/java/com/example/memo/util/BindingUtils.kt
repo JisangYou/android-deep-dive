@@ -12,20 +12,20 @@ import com.example.memo.ui.edited.MemoEditedAdapter
 import com.example.memo.ui.list.MemoAdapter
 
 
-@BindingAdapter("memo_items")
+@BindingAdapter("memoItems")
 fun setMemoItems(listView: RecyclerView, items: List<Memo>?) {
     items?.let {
         (listView.adapter as MemoAdapter).submitList(items)
     }
 }
 
-@BindingAdapter("img_items")
+@BindingAdapter("imgItems")
 fun setImageItems(recyclerView: RecyclerView, data: List<String>?) {
     val adapter = recyclerView.adapter as MemoEditedAdapter
     adapter.submitList(data)
 }
 
-@BindingAdapter("img_url")
+@BindingAdapter("imgUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()

@@ -21,12 +21,11 @@ class MemoEditedViewModel(application: Application) :
     // Two-way databinding, exposing MutableLiveData
     val title = MutableLiveData<String>()
     val description = MutableLiveData<String>()
-    var fbFlag = MutableLiveData<Boolean>();
     var urlList = MutableLiveData<List<String>>()
     private val memoRepository: MemoRepository
 
     init {
-        fbFlag.value = false
+
         val memoDao = MemoDatabase.getInstance(application).memoDao()
         memoRepository = MemoRepository(memoDao)
     }
@@ -49,9 +48,8 @@ class MemoEditedViewModel(application: Application) :
     }
 
     fun takePicture(fragment: MemoEditedFragment) {
-        var intent: Intent? = null
         viewModelScope.launch {
-            intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
 
                 /**
                  * 권한 설정을 거절 헀을 수도 있으니까...

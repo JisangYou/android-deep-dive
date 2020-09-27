@@ -31,11 +31,12 @@
 
         <Button
             android:id="@+id/fab_addMemo"
+            android:text="메모 추가"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             android:layout_marginTop="16dp"
-            android:onClick="@{()->view.navigateToMemoEdited()}"
+            android:onClick="@{()->view.navigateToMemoAdd()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
