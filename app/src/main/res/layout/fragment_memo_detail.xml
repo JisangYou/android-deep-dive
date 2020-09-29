@@ -48,24 +48,10 @@
 
             <Button
                 android:id="@+id/btn_addMemo"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="add" />
-
-            <Button
-                android:id="@+id/btn_addImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="album" />
-
-            <Button
-                android:id="@+id/btn_pictureImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="picture" />
 
         </LinearLayout>
     </LinearLayout>

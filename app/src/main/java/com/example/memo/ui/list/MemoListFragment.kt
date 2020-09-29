@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memo.EventObserver
 import com.example.memo.R
 import com.example.memo.ViewModelFactory
-
 import com.example.memo.databinding.FragmentMemoListBinding
+
 import timber.log.Timber
 
 /**
@@ -33,11 +33,8 @@ class MemoListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_memo_list, container, false
-        )
-        val application = requireNotNull(this.activity).application
-        val viewModelFactory = ViewModelFactory(application)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_memo_list, container, false)
+        val viewModelFactory = ViewModelFactory(requireNotNull(this.activity).application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MemoViewModel::class.java)
         binding.rvMemoList.layoutManager = LinearLayoutManager(activity)
         binding.viewModel = viewModel
@@ -78,8 +75,8 @@ class MemoListFragment : Fragment() {
     }
 
     fun navigateToMemoDetail(memoId: Long) {
-        val action = MemoListFragmentDirections.actionFragmentMemoListToMemoDetailFragment()
-        Timber.d("move to DetailFragment$memoId")
+        val action = MemoListFragmentDirections.actionFragmentMemoListToMemoDetailFragment(memoId)
+        Timber.d("move to DetailFragment $memoId")
         findNavController().navigate(action)
     }
 

@@ -23,7 +23,11 @@
         android:id="@+id/fragment_memo_detail"
         android:name="com.example.memo.ui.detail.MemoDetailFragment"
         android:label="fragment_memo_detail"
-        tools:layout="@layout/fragment_memo_detail"/>
+        tools:layout="@layout/fragment_memo_detail">
+        <argument
+            android:name="memoId"
+            app:argType="long" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_memo_edited"
         android:name="com.example.memo.ui.edited.MemoEditedFragment"
