@@ -20,9 +20,9 @@ interface MemoDao {
     @Query("SELECT * FROM memos")
     fun getMemos(): LiveData<List<Memo>>
 
-//    @Query("SELECT * FROM memos WHERE memoId=:memoId")
-//    fun getMemoById(memoId: String)
+    @Query("SELECT * FROM memos WHERE memoId = :memoId")
+    fun getMemoById(memoId: Long): LiveData<Memo>
 
-//    @Query("DELETE FROM memos WHERE memoId = :memoId")
-//    fun deleteTaskById(memoId: Long)
+    @Query("DELETE FROM memos WHERE memoId = :memoId")
+    fun deleteTaskById(memoId: Long)
 }

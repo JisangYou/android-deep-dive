@@ -25,7 +25,6 @@ class MemoDetailFragment : Fragment() {
     private lateinit var viewModel: MemoDetailViewModel
     private val args: MemoDetailFragmentArgs by navArgs()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +32,7 @@ class MemoDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_memo_detail, container, false)
         val application = requireNotNull(this.activity).application
+
 
         viewModel = ViewModelProvider(this, ViewModelFactory(application)).get(MemoDetailViewModel::class.java)
         binding.vm = viewModel
@@ -46,5 +46,7 @@ class MemoDetailFragment : Fragment() {
     private fun getMemoId() {
         val memoId = args.memoId
         Timber.d("memoId$memoId")
+        binding.vm!!.getMemoById(memoId)
+
     }
 }
