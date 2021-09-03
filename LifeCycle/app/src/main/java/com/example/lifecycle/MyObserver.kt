@@ -1,4 +1,4 @@
-package com.example.lifecyclebasic
+package com.example.lifecycle
 
 import android.util.Log
 import androidx.lifecycle.Lifecycle

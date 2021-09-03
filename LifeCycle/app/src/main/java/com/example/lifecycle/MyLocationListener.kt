@@ -1,4 +1,4 @@
-package com.example.lifecyclebasic
+package com.example.lifecycle
 
 import android.content.Context
 import android.location.Location
