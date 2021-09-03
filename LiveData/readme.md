@@ -1,0 +1,2 @@
+- livedata를 repository에 사용하지 않기
+- by viewmodel()을 사용하고자 할때는 fragment-ktx
