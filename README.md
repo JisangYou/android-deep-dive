@@ -2,17 +2,15 @@
 
 [lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycleBasic)
 
-# Kotlin Sample Project
-
 ## 목차
-
-## AAC 
 
 - AAC
 
 - Gradle이란?
 
 - Android KTX란?
+
+- 코루틴 
 
 ```
 Android KTX는 Android Jetpack과 기타 Android 라이브러리에 포함된 Kotlin 확장 프로그램 세트입니다. KTX 확장 프로그램은 간결하고 직관적인 Kotlin을 Jetpack, Android 플랫폼, 기타 API에 제공합니다. 이렇게 하기 위해 이러한 확장 프로그램은 다음과 같은 여러 Kotlin 언어 기능을 활용합니다.
@@ -41,6 +39,9 @@ Android KTX는 Android Jetpack과 기타 Android 라이브러리에 포함된 Ko
 ```
 
 ## 코루틴
+
+- ![멀티쓰레딩](https://user-images.githubusercontent.com/31605792/134524165-b3cd5ae5-a76a-4614-8518-53e52b3f48a7.png)
+
 ```
 suspend는 모든 로컬 변수를 저장하여 현재 코루틴 실행을 정지합니다.
 resume은 정지된 위치부터 정지된 코루틴을 계속 실행합니다.
