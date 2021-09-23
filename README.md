@@ -1,6 +1,7 @@
 # android-deep-dive
 
-[lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycleBasic)
+[lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycle)
+[Coroutine](https://github.com/JisangYou/android-deep-dive/tree/master/Coroutine)
 
 ## 목차
 
@@ -41,6 +42,14 @@ Android KTX는 Android Jetpack과 기타 Android 라이브러리에 포함된 Ko
 ## 코루틴
 
 - ![멀티쓰레딩](https://user-images.githubusercontent.com/31605792/134524165-b3cd5ae5-a76a-4614-8518-53e52b3f48a7.png)
+- 쓰레드를 사용하면 간단하게 여러 작업 동시 실행이 가능하나, 쓰레드를 코드에 __직접__ 사용하면 여러 문제 발생할 수 있다.
+1. 많은 리소스가 필요 (한정된 시간)
+2. 경합 상태 및 예측할 수 없는 동작
+    - 여러 스레드로 작업할 때는 경합 상태도 발생할 수 있음
+    - 여러 스레드가 동시에 메모리의 동일한 값에 액세스하려고 할 때 발생
+    - 경합 상태로 인해 무작위로 보이는 버그를 재현하기 어려울 수 있고 이로 인해 예상치 못한 앱의 비정상 종료를 유발
+    
+- 출처 : [코드랩](https://developer.android.com/codelabs/basic-android-kotlin-training-introduction-coroutines?continue=https%3A%2F%2Fcodelabs.developers.google.com%2F#2)
 
 ```
 suspend는 모든 로컬 변수를 저장하여 현재 코루틴 실행을 정지합니다.
