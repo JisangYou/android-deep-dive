@@ -57,8 +57,11 @@ Android KTX는 Android Jetpack과 기타 Android 라이브러리에 포함된 Ko
 Job - 취소 가능한 작업 단위(예: launch() 함수로 만든 작업 단위)입니다.
 CoroutineScope - launch() 및 async()와 같은 새 코루틴을 만드는 데 사용되는 함수는 CoroutineScope를 확장합니다.
 Dispatcher - 코루틴이 사용할 스레드를 결정합니다. Main 디스패처는 항상 기본 스레드에서 코루틴을 실행하지만 Default나 IO, Unconfined와 같은 디스패처는 다른 스레드를 사용합니다.
-runBlocking - 새 코루틴을 시작하고 완료될 때까지 현재 스레드를 차단하는 runBlocking()을 사용
+runBlocking() - 새 코루틴을 시작하고 완료될 때까지 현재 스레드를 차단하는 runBlocking()을 사용
+async() - Deferred 유형의 값을 반환합니다. Deferred는 미래 값 참조를 보유할 수 있는 취소 가능한 Job
+suspend 함수 - 비동기 실행을 위한 중단 지점
 ```
+출처 : [코드랩](https://developer.android.com/codelabs/basic-android-kotlin-training-introduction-coroutines?continue=https%3A%2F%2Fcodelabs.developers.google.com%2F#3)
 
 ```
 suspend는 모든 로컬 변수를 저장하여 현재 코루틴 실행을 정지합니다.
