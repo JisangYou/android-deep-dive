@@ -2,7 +2,7 @@
 
 - [lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycle)
 - [Coroutine](https://github.com/JisangYou/android-deep-dive/tree/master/Coroutine)
-- [ConstraintLayout]
+- [ConstraintLayout](https://github.com/JisangYou/android-deep-dive/tree/master/ConstraintLayout)
 
 ## 목차
 
@@ -213,8 +213,12 @@ class MyFragment: Fragment() {
 
 
 ## constraint Layout 톹아보기
-
-- ![packed](https://user-images.githubusercontent.com/31605792/134912395-8b69f693-1970-4e5c-9d41-aafd8bccf1ec.png)
+### chain style
+#### spread inside
 - ![spread_inside](https://user-images.githubusercontent.com/31605792/134912399-00ff9273-e993-4791-80c3-f4c848af138c.png)
+#### spread
 - ![spread](https://user-images.githubusercontent.com/31605792/134912403-094063ea-1880-4349-acbe-4cbde3405132.png)
+#### packed
+- ![packed](https://user-images.githubusercontent.com/31605792/134912395-8b69f693-1970-4e5c-9d41-aafd8bccf1ec.png)
+#### weighted
 - ![weighted](https://user-images.githubusercontent.com/31605792/134912407-63d70958-bfbb-4e1e-8eca-fb858e3a3b09.png)
