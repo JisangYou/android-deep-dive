@@ -1,7 +1,8 @@
 # android-deep-dive
 
-[lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycle)
-[Coroutine](https://github.com/JisangYou/android-deep-dive/tree/master/Coroutine)
+- [lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycle)
+- [Coroutine](https://github.com/JisangYou/android-deep-dive/tree/master/Coroutine)
+- [ConstraintLayout]
 
 ## 목차
 
@@ -209,3 +210,11 @@ class MyFragment: Fragment() {
 - 클래스의 인스턴스와 상관없이 호출해야 하지만 class의 내부 정보에 접근할수 있는 함수가 필요할때 companion object를 class 내부에 선언
 
 출처: https://tourspace.tistory.com/109 [투덜이의 리얼 블로그]
+
+
+## constraint Layout 톹아보기
+
+- ![packed](https://user-images.githubusercontent.com/31605792/134912395-8b69f693-1970-4e5c-9d41-aafd8bccf1ec.png)
+- ![spread_inside](https://user-images.githubusercontent.com/31605792/134912399-00ff9273-e993-4791-80c3-f4c848af138c.png)
+- ![spread](https://user-images.githubusercontent.com/31605792/134912403-094063ea-1880-4349-acbe-4cbde3405132.png)
+- ![weighted](https://user-images.githubusercontent.com/31605792/134912407-63d70958-bfbb-4e1e-8eca-fb858e3a3b09.png)
