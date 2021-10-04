@@ -2,11 +2,12 @@ package com.example.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.databinding.ItemBinding
 
 
-class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter : ListAdapter<ItemData, Adapter.ViewHolder>(DiffUtilCallback()) {
 
     var itemDataList = mutableListOf<ItemData>()
 
@@ -22,6 +23,10 @@ class Adapter : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return itemDataList.size
+    }
+
+    fun update() {
+        submitList(itemDataList)
     }
 
     class ViewHolder(private val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {

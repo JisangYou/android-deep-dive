@@ -16,9 +16,21 @@ class MainActivity : AppCompatActivity() {
         adapter = Adapter()
         binding.rv.adapter = adapter
 
-        adapter.itemDataList = mutableListOf(
-            ItemData("Han"),
-            ItemData("Lee")
-        )
+
+
+        binding.btn.setOnClickListener {
+            setDummyData()
+            update()
+        }
+    }
+
+    private fun setDummyData() {
+        for (i in 0..20) {
+            adapter.itemDataList.add(ItemData("Jay $i"))
+        }
+    }
+
+    private fun update() {
+        adapter.update()
     }
 }
