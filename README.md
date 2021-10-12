@@ -1,8 +1,9 @@
 # android-deep-dive
 
-- [lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycle)
+- [Lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycle)
 - [Coroutine](https://github.com/JisangYou/android-deep-dive/tree/master/Coroutine)
 - [ConstraintLayout](https://github.com/JisangYou/android-deep-dive/tree/master/ConstraintLayout)
+- Proguard
 
 ## 목차
 
@@ -152,3 +153,25 @@ class MyFragment: Fragment() {
 - ![packed](https://user-images.githubusercontent.com/31605792/134912395-8b69f693-1970-4e5c-9d41-aafd8bccf1ec.png)
 #### weighted
 - ![weighted](https://user-images.githubusercontent.com/31605792/134912407-63d70958-bfbb-4e1e-8eca-fb858e3a3b09.png)
+
+
+## proguard 
+### multidex
+- 앱 및 앱이 참조하는 라이브러리에서 메서드가 65,536개를 초과하면 앱이 Android 빌드 아키텍처의 제한에 도달했음을 알리는 빌드 오류가 발생
+- 단일 DEX(Dalvik Executable) 바이트 코드 파일 내에서 코드가 호출할 수 있는 참조의 총 개수
+- 참고) 계측 테스트 
+```
+fun onCreate(arguments: Bundle) {
+  MultiDex.install(targetContext) // AndroidJUnitRunner로 사용권장
+  super.onCreate(arguments)
+  ...
+}
+```
+### multidex 단점
+- 멀티덱스를 사용하면 큰 어려움 없이 큰 규모의 앱을 빌드 가능 
+- 빌드 과정에서 앱 내에서 사용하는 클래스를 여러 개의 덱스 파일로 나눔 -> 이를 위해 별도의 분석 작업이 추가 -> 빌드 속도가 느려짐.
+- 실제로 앱에서 사용하지 않는 클래스도 모두 포함하므로 앱 용량도 늘어남
+
+
+### proguard
+
