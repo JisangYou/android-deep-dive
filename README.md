@@ -3,7 +3,7 @@
 - [Lifecycle](https://github.com/JisangYou/android-deep-dive/tree/master/LifeCycle)
 - [Coroutine](https://github.com/JisangYou/android-deep-dive/tree/master/Coroutine)
 - [ConstraintLayout](https://github.com/JisangYou/android-deep-dive/tree/master/ConstraintLayout)
-- Proguard
+- [Proguard](https://github.com/JisangYou/android-deep-dive/tree/master/Proguard)
 
 ## 목차
 
@@ -176,3 +176,7 @@ fun onCreate(arguments: Bundle) {
 
 ### proguard
 
+1. 코드 난독화를 통해 디컴파일시 본인의 코드가 노출되는 것을 방지
+2. 불필요한 메서드를 제거하여 멀티덱스를 피할 수 있음
+
+출처 : https://black-jin0427.tistory.com/89
