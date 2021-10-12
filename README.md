@@ -172,6 +172,7 @@ fun onCreate(arguments: Bundle) {
 - 빌드 과정에서 앱 내에서 사용하는 클래스를 여러 개의 덱스 파일로 나눔 -> 이를 위해 별도의 분석 작업이 추가 -> 빌드 속도가 느려짐.
 - 실제로 앱에서 사용하지 않는 클래스도 모두 포함하므로 앱 용량도 늘어남
 
+출처: https://www.androidhuman.com/2017-02-16-reduce-method-count-with-proguard
 
 ### proguard
 
