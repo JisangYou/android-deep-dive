@@ -38,32 +38,32 @@ class ButtonsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        populateFields(context)
+//        populateFields(context)
     }
 
-    private fun populateFields(context: Context) {
-        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
-        navigator = (context.applicationContext as LogApplication).serviceLocator.provideNavigator(
-            activity!!
-        )
-    }
+//    private fun populateFields(context: Context) {
+//        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
+//        navigator = (context.applicationContext as LogApplication).serviceLocator.provideNavigator(
+//            activity!!
+//        )
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         view.findViewById<Button>(R.id.button1).setOnClickListener {
-            logger.addLog("Interaction with 'Button 1'")
             Log.e("check1","1")
+            logger.addLog("Interaction with 'Button 1'")
 
         }
 
         view.findViewById<Button>(R.id.button2).setOnClickListener {
-            logger.addLog("Interaction with 'Button 2'")
             Log.e("check2","2")
+            logger.addLog("Interaction with 'Button 2'")
         }
 
         view.findViewById<Button>(R.id.button3).setOnClickListener {
-            logger.addLog("Interaction with 'Button 3'")
             Log.e("check3","3")
+            logger.addLog("Interaction with 'Button 3'")
         }
 
         view.findViewById<Button>(R.id.all_logs).setOnClickListener {

@@ -3,6 +3,7 @@ package com.example.hilt.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log.d
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,11 +51,11 @@ class LogsFragment : Fragment() {
     }
 
 
-    private fun populateFields(context: Context) {
-        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
-        dateFormatter =
-            (context.applicationContext as LogApplication).serviceLocator.provideDateFormatter()
-    }
+//    private fun populateFields(context: Context) {
+//        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
+//        dateFormatter =
+//            (context.applicationContext as LogApplication).serviceLocator.provideDateFormatter()
+//    }
 
     override fun onResume() {
         super.onResume()
