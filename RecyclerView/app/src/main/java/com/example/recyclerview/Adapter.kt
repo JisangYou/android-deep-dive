@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.databinding.ItemBinding
 
 
-class Adapter : ListAdapter<ItemData, Adapter.ViewHolder>(DiffUtilCallback()) {
+class Adapter : ListAdapter<ItemData, Adapter.ViewHolder>(DiffUtilItemCallback()) {
 
     var itemDataList = mutableListOf<ItemData>()
 
