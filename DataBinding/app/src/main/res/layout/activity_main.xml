@@ -5,6 +5,13 @@
 
     <data>
 
+        <variable
+            name="name"
+            type="String" />
+
+        <variable
+            name="viewModel"
+            type="com.example.databinding.ViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +20,7 @@
         tools:context=".MainActivity">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!"
@@ -21,22 +29,40 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@{String.valueOf(index + 1)}"-->
-<!--            android:transitionName='@{"image_" + id}'-->
-<!--            android:visibility="@{age < 13 ? View.GONE : View.VISIBLE}" />-->
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{name}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lastName"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--             // Bind the name property of the viewmodel to the text attribute-->
-<!--             android:text="@{viewmodel.name}"-->
-<!--             // Bind the nameVisible property of the viewmodel to the visibility attribute-->
-<!--             android:visibility="@{viewmodel.nameVisible}"-->
-<!--            // Call the onLike() method on the viewmodel when the View is clicked.-->
-<!--            android:onClick="@{() -> viewmodel.onLike()}"/>-->
+        <TextView
+            android:id="@+id/lastName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lastName}"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@{String.valueOf(index + 1)}"-->
+        <!--            android:transitionName='@{"image_" + id}'-->
+        <!--            android:visibility="@{age < 13 ? View.GONE : View.VISIBLE}" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--             // Bind the name property of the viewmodel to the text attribute-->
+        <!--             android:text="@{viewmodel.name}"-->
+        <!--             // Bind the nameVisible property of the viewmodel to the visibility attribute-->
+        <!--             android:visibility="@{viewmodel.nameVisible}"-->
+        <!--            // Call the onLike() method on the viewmodel when the View is clicked.-->
+        <!--            android:onClick="@{() -> viewmodel.onLike()}"/>-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
