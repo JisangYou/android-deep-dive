@@ -11,4 +11,16 @@ class ViewModel : ViewModel() {
     val lastName: LiveData<String>
         get() = _lastName
 
+    private val _likes = MutableLiveData(0)
+
+    val likes: LiveData<Int>
+        get() = _likes
+
+    fun onLike() {
+        _likes.value = (_likes.value ?: 0) + 1
+    }
+    fun onReset() {
+        _likes.value = 0
+    }
+
 }
