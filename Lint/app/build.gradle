@@ -48,6 +48,7 @@ android {
 }
 configurations {
     ktlint
+    detekt
 }
 dependencies {
     ktlint("com.pinterest.ktlint:ktlint-cli:1.1.0") {
@@ -55,6 +56,7 @@ dependencies {
             attribute(Bundling.BUNDLING_ATTRIBUTE, getObjects().named(Bundling, Bundling.EXTERNAL))
         }
     }
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.23.3'
     // additional 3rd party ruleset(s) can be specified here
     // just add them to the classpath (e.g. ktlint 'groupId:artifactId:version') and
     // ktlint will pick them up
@@ -97,4 +99,16 @@ tasks.register("ktlintFormat", JavaExec) {
     jvmArgs "--add-opens=java.base/java.lang=ALL-UNNAMED"
     // see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information
     args "-F", "src/**/*.kt", "**.kts", "!**/build/**"
+}
+
+def detektTask = tasks.register("detekt", JavaExec) {
+    main = "io.gitlab.arturbosch.detekt.cli.Main"
+    classpath = configurations.detekt
+
+    def input = "$projectDir"
+    def config = "$projectDir/detekt.yml"
+    def exclude = ".*/build/.*,.*/resources/.*"
+    def params = [ '-i', input, '-c', config, '-ex', exclude]
+
+    args(params)
 }
