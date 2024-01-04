@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testingsample.sample.Tax
 import kotlinx.android.synthetic.main.activity_test.*
 
 class TestActivity : AppCompatActivity() {
@@ -13,21 +14,27 @@ class TestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
+//        editText.addTextChangedListener(object : TextWatcher {
+//            override fun afterTextChanged(p0: Editable?) {
+//
+//            }
+//
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                textView.text = p0
+//            }
+//        })
+//
+//
+//        button.setOnClickListener { Toast.makeText(this, textView.text, Toast.LENGTH_SHORT).show() }
+        val tax = Tax()
+        val netIncome = tax.calculateIncome(100.0, 0.1)
+        val netTax = tax.calculateTax(100.0, 0.1)
 
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                textView.text = p0
-            }
-        })
-
-
-        button.setOnClickListener { Toast.makeText(this, textView.text, Toast.LENGTH_SHORT).show() }
+        println(netIncome)
+        println(netTax)
     }
 }
