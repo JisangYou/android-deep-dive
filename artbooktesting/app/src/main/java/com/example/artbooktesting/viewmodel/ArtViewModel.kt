@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class ArtViewModel @Inject constructor(private val repository: ArtRepositoryInterface) :
     ViewModel() {
-    val artList = repository
+    val artList = repository.getArt()
 
     private val images = MutableLiveData<Resource<ImageResponse>>()
     val imageList: LiveData<Resource<ImageResponse>>
