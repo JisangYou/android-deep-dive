@@ -13,8 +13,10 @@ import com.example.artbooktesting.R
 import com.example.artbooktesting.databinding.FragmentArtDetailsBinding
 import com.example.artbooktesting.util.Status
 import com.example.artbooktesting.viewmodel.ArtViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ArtDetailsFragment @Inject constructor(
     val glide: RequestManager
 ) : Fragment(R.layout.fragment_art_details) {
@@ -37,6 +39,7 @@ class ArtDetailsFragment @Inject constructor(
         }
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
+                viewModel.setSelectedImage("")
                 findNavController().popBackStack()
             }
         }
@@ -67,21 +70,19 @@ class ArtDetailsFragment @Inject constructor(
                     viewModel.resetInsertArtMsg()
                 }
 
-                Status.LOADING -> {
+                Status.ERROR -> {
                     Toast.makeText(requireContext(), it.message ?: "Error", Toast.LENGTH_LONG)
                         .show()
-
                 }
 
-                Status.ERROR -> {
-
+                Status.LOADING -> {
                 }
             }
         })
     }
 
     override fun onDestroyView() {
-        fragmentBinding = null
         super.onDestroyView()
+        fragmentBinding = null
     }
 }

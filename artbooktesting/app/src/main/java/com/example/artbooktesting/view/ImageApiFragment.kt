@@ -8,17 +8,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.artbooktesting.R
 import com.example.artbooktesting.adapter.ImageRecyclerAdapter
 import com.example.artbooktesting.databinding.FragmentImageApiBinding
 import com.example.artbooktesting.util.Status
 import com.example.artbooktesting.viewmodel.ArtViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class ImageApiFragment @Inject constructor(
     private val imageRecyclerAdapter: ImageRecyclerAdapter
 ) : Fragment(R.layout.fragment_image_api) {
@@ -54,6 +57,7 @@ class ImageApiFragment @Inject constructor(
         binding.imageRecyclerView.adapter = imageRecyclerAdapter
         binding.imageRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         imageRecyclerAdapter.setOnItemClickListener {
+            findNavController().popBackStack()
             viewModel.setSelectedImage(it)
         }
     }
