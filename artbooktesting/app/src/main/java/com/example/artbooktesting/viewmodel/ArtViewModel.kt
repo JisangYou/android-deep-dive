@@ -8,9 +8,11 @@ import com.example.artbooktesting.model.ImageResponse
 import com.example.artbooktesting.repo.ArtRepositoryInterface
 import com.example.artbooktesting.roomdb.Art
 import com.example.artbooktesting.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ArtViewModel @Inject constructor(private val repository: ArtRepositoryInterface) :
     ViewModel() {
     val artList = repository.getArt()
