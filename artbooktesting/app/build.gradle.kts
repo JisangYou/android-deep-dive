@@ -87,7 +87,7 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("org.robolectric:robolectric:4.8.1")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
-    testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("com.google.truth:truth:1.1.5")
     testImplementation("org.mockito:mockito-core:4.7.0")
 
     // Android Test Implementations
@@ -96,5 +96,5 @@ dependencies {
     androidTestImplementation("org.mockito:mockito-android:4.7.0")
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
     androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
-    androidTestImplementation("com.google.truth:truth:1")
+    androidTestImplementation("com.google.truth:truth:1.1.5")
 }
