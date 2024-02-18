@@ -1,17 +1,13 @@
 package com.example.artbooktesting.roomdb
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.room.Insert
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.filters.SmallTest
-import com.example.artbooktesting.getOrAwaitValueTest
+import com.example.artbooktesting.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.test.StandardTestDispatcher
-import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -60,7 +56,7 @@ class ArtDaoTest {
     fun insertArtTesting() = runBlockingTest {
         val exampleArt = Art("Mona Lisa", "Da Vinci", 1700, "test.com", 1)
         dao.insertArt(exampleArt)
-        val list = dao.observeArts().getOrAwaitValueTest()
+        val list = dao.observeArts().getOrAwaitValue()
         assertThat(list).contains(exampleArt)
     }
 
@@ -70,7 +66,7 @@ class ArtDaoTest {
         dao.insertArt(exampleArt)
         dao.deleteArt(exampleArt)
 
-        val list = dao.observeArts().getOrAwaitValueTest()
+        val list = dao.observeArts().getOrAwaitValue()
         assertThat(list).doesNotContain(exampleArt)
     }
 }
